@@ -23,12 +23,26 @@ class Box extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
+
+  static const appTitle = 'World Wide Words';
 
   @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: appTitle,
+      home: MyHomePage(title: appTitle),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
   Widget build(BuildContext context) => MaterialApp(
-      debugShowCheckedModeBanner: false,
-      color: Colors.red,
+        debugShowCheckedModeBanner: false,
+        color: Colors.red,
         home: Scaffold(
           appBar: AppBar(
             title: const Text('World Wide Words'),
@@ -130,6 +144,53 @@ class MyApp extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text('Idol Tran'),
+                ),
+                ListTile(
+                  title: const Text('🇺🇸 United States'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: const Text('🇻🇳 Vietnam'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: const Text('🇬🇧  United Kingdom'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: const Text('🇫🇷 France'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: const Text('🇷🇺 Russia'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                ),
+              ],
             ),
           ),
         ),

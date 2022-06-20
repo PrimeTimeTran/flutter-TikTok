@@ -1,4 +1,7 @@
-- Box widget with Color as a input parameter.
+- Instantiate class with Color class as input parameter.
+- Drawer navigator
+- Drawer items
+- 
 
 ```dart
 class Box extends StatelessWidget {
