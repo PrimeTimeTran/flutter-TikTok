@@ -70,5 +70,3 @@ class MyApp extends StatelessWidget {
 }
 
 ```
-
-![sos](/ss-1.png)
