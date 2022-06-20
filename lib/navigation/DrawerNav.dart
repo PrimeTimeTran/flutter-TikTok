@@ -11,7 +11,7 @@ class DrawerNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('World Wide Words'),
+          // title: const Text('World Wide Words'),
       ),
       body: const TabNav(),
       drawer: Drawer(

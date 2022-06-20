@@ -3,111 +3,56 @@
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/widgets/Box.dart';
+import 'package:worldlingo3/pages/VietnamPage.dart';
+import 'package:worldlingo3/model/user.dart';
+import 'package:worldlingo3/api/sheets/user_sheets_api.dart';
 
-class Newsfeed extends StatelessWidget {
+class Newsfeed extends StatefulWidget {
   const Newsfeed({Key? key}) : super(key: key);
 
   @override
+  State<Newsfeed> createState() => _Newsfeed();
+}
+
+class _Newsfeed extends State<Newsfeed> {
+  List<User> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    getUsers();
+  }
+
+  Future getUsers() async {
+    final users = await UserSheetsApi.getAll();
+    print(users.length);
+    setState(() {
+      this.users = users;
+    });
+  }
+
+  var list = ["one", "two", "three", "four"];
+
+  @override
   Widget build(BuildContext context) {
+    final items = List<String>.generate(10, (i) => "Item $i");
     return DefaultTabController(
       length: 3,
       child: Container(
         color: Colors.white,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(5),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0),
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Box(colour: Colors.red.shade900),
-                      Box(colour: Colors.white),
-                      Box(colour: Colors.blue.shade900),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0),
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Box(colour: Colors.pink),
-                      Box(colour: Colors.cyanAccent),
-                      Box(colour: Colors.deepPurple),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Box(colour: Colors.pink),
-                      Box(colour: Colors.cyanAccent),
-                      Box(colour: Colors.deepPurple),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(20.0),
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Column(
-                    children: [
-                      Box(colour: Colors.red),
-                      Box(colour: Colors.white),
-                      Box(colour: Colors.blue),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(20.0),
-                  padding: EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Column(
-                    children: [
-                      Box(colour: Colors.amber),
-                      Box(colour: Colors.black),
-                      Box(colour: Colors.green),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent)),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Box(colour: Colors.pink),
-                      Box(colour: Colors.cyanAccent),
-                      Box(colour: Colors.deepPurple),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+        padding: const EdgeInsets.all(5),
+        child: ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            final icon = Icon(Icons.email, color: Colors.red, size: 30);
+
+            return ListTile(
+              title: Text(users[index].name),
+              subtitle: Text(users[index].email),
+              leading: icon,
+            );
+          },
         ),
       ),
     );

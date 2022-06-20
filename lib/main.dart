@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:worldlingo3/api/sheets/user_sheets_api.dart';
 import 'navigation/DrawerNav.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserSheetsApi.init();
   runApp(const MyApp());
 }
 
