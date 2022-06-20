@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/widgets/Box.dart';
+import 'package:worldlingo3/pages/VietnamPage2.dart';
 
 class VietnamPage extends StatefulWidget {
   const VietnamPage({Key? key}) : super(key: key);
@@ -22,7 +23,11 @@ class _VietnamPage extends State<VietnamPage> {
       body: Center(child: Text('You have pressed the button $_count times.')),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
-        onPressed: () => setState(() => _count++),
+        // onPressed: () => setState(() => _count++),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const VietnamPage2()),
+        ),
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
