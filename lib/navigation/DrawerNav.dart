@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/pages/Newsfeed.dart';
 import 'package:worldlingo3/navigation/TabNav.dart';
+import 'package:worldlingo3/pages/VietnamPage.dart';
 
 
 class DrawerNav extends StatelessWidget {
@@ -38,8 +39,10 @@ class DrawerNav extends StatelessWidget {
             ListTile(
               title: const Text('🇻🇳 Vietnam'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const VietnamPage()),
+                );
               },
             ),
             ListTile(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:worldlingo3/navigation/DrawerNav.dart';
+import 'navigation/DrawerNav.dart';
 
 void main() {
   runApp(const MyApp());

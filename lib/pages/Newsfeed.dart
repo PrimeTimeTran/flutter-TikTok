@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/widgets/Box.dart';
@@ -10,16 +12,16 @@ class Newsfeed extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Container(
-        color: Colors.yellow,
+        color: Colors.white,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.all(20.0),
+                  margin: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent)),
                   child: Row(
@@ -33,8 +35,8 @@ class Newsfeed extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20.0),
-                  padding: EdgeInsets.all(20.0),
+                  margin: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent)),
                   child: Row(
