@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:worldlingo3/pages/Newsfeed.dart';
-import 'package:worldlingo3/navigation/TabNav.dart';
 import 'package:worldlingo3/pages/VietnamPage.dart';
+import 'package:worldlingo3/navigation/TabNav.dart';
 
 
 class DrawerNav extends StatelessWidget {
@@ -15,8 +13,7 @@ class DrawerNav extends StatelessWidget {
       appBar: AppBar(
         title: const Text('World Wide Words'),
       ),
-      // body: Newsfeed(),
-      body: StatefulTabBar(),
+      body: const TabNav(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,

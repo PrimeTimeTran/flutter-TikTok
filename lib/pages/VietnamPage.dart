@@ -16,10 +16,12 @@ class _VietnamPage extends State<VietnamPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Code'),
+        backgroundColor: Colors.red,
+        title: const Text('Vietnam Page'),
       ),
       body: Center(child: Text('You have pressed the button $_count times.')),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
         onPressed: () => setState(() => _count++),
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),

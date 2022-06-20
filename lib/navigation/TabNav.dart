@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/pages/Newsfeed.dart';
 
-class StatefulTabBar extends StatefulWidget {
-  const StatefulTabBar({Key? key}) : super(key: key);
+class TabNav extends StatefulWidget {
+  const TabNav({Key? key}) : super(key: key);
 
   @override
-  State<StatefulTabBar> createState() => _StatefulTabBar();
+  State<TabNav> createState() => _TabNav();
 }
 
-class _StatefulTabBar extends State<StatefulTabBar> {
+class _TabNav extends State<TabNav> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'navigation/DrawerNav.dart';
 
 void main() {
@@ -7,7 +8,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   static const appTitle = 'World Wide Words';
 
   @override
