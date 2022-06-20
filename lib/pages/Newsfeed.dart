@@ -46,7 +46,6 @@ class _Newsfeed extends State<Newsfeed> {
           itemCount: users.length,
           itemBuilder: (context, index) {
             final icon = Icon(Icons.email, color: Colors.red, size: 30);
-
             return ListTile(
               title: Text(users[index].name),
               subtitle: Text(users[index].email),
