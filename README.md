@@ -1,7 +1,14 @@
+# 30 days of Flutter(1)
+
+A few projects to understand Flutter.
+
+![demo](./demo.gif)
+
+- Layouts
 - Instantiate class with Color class as input parameter.
 - Drawer navigator
 - Drawer items
-- 
+- Navigator pop with context
 
 ```dart
 class Box extends StatelessWidget {
