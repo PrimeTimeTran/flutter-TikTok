@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:worldlingo3/widgets/Box.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
+class Newsfeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('World Wide Words'),
-      ),
-      body: Container(
+    return DefaultTabController(
+      length: 3,
+      child: Container(
         color: Colors.yellow,
         child: SingleChildScrollView(
           padding: EdgeInsets.all(5),
@@ -110,6 +105,51 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class TabBarWidget extends StatelessWidget {
+  const TabBarWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        bottomNavigationBar: AppBar(
+          bottom: const TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.directions_car)),
+              Tab(icon: Icon(Icons.directions_transit)),
+              Tab(icon: Icon(Icons.directions_bike)),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            Icon(Icons.directions_car),
+            Icon(Icons.directions_transit),
+            Icon(Icons.directions_bike),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DrawerNav extends StatelessWidget {
+  const DrawerNav({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('World Wide Words'),
+      ),
+      body: const TabBarWidget(),
+      // body: Newsfeed(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -118,7 +158,10 @@ class MyHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Idol Tran'),
+              child: Text(
+                'Idol Tran',
+                style: TextStyle(color: Colors.amber),
+              ),
             ),
             ListTile(
               title: const Text('🇺🇸 United States'),
