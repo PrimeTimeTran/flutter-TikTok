@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:worldlingo3/pages/Newsfeed.dart';
+import 'package:worldlingo3/pages/Phrasefeed.dart';
 import 'package:worldlingo3/pages/VietnamPage.dart';
 import 'package:worldlingo3/navigation/TabNav.dart';
 
@@ -11,13 +12,12 @@ class DrawerNav extends StatefulWidget {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 0;
+  int currentIdx = 1;
 
   final screens = [
     Newsfeed(),
-    Center(child: Text('2nd')),
+    Phrasefeed(),
     Center(child: Text('3nd')),
-    Center(child: Text('2nd')),
   ];
 
   @override

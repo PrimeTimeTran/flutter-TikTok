@@ -1,7 +1,7 @@
 import 'package:gsheets/gsheets.dart';
-import 'package:worldlingo3/model/user.dart';
+import 'package:worldlingo3/model/phrase.dart';
 
-class UserSheetsApi {
+class PhraseSheetsApi {
   static const _credentials = r'''
     {
       "type": "service_account",
@@ -20,37 +20,37 @@ class UserSheetsApi {
     }
   ''';
 
-  static Worksheet? _userSheet;
+  static Worksheet? _phraseSheet;
   static const _spreadsheetId = '1AT55CYUZfzLOu32jrO7UQP2TV_Mw5AjvfDFNbYaZpQ0';
   static final _gsheets = GSheets(_credentials);
 
   static Future init() async {
     try {
       final spreadsheet = await _gsheets.spreadsheet(_spreadsheetId);
-      _userSheet = await _getWorkSheet(spreadsheet, title: 'Phrases');
-      final firstRow = UserFields.getFields();
-      _userSheet!.values.insertRow(1, firstRow);
+      _phraseSheet = await _getWorkSheet(spreadsheet, title: 'Phrases');
+      final firstRow = PhraseFields.getFields();
+      _phraseSheet!.values.insertRow(1, firstRow);
     } catch (e) {
       // print('Init Error: $e');
     }
   }
 
   static Future insert(List<Map<String, dynamic>> rowList) async {
-    if (_userSheet == null) return;
-    _userSheet!.values.map.appendRows(rowList);
+    if (_phraseSheet == null) return;
+    _phraseSheet!.values.map.appendRows(rowList);
   }
 
-  static Future<User?> getById(int id) async {
-    if (_userSheet == null) return null;
-    final json = await _userSheet!.values.map.rowByKey(id, fromColumn: 1);
-    return json == null ? null : User.fromJson(json);
+  static Future<Phrase?> getById(int id) async {
+    if (_phraseSheet == null) return null;
+    final json = await _phraseSheet!.values.map.rowByKey(id, fromColumn: 1);
+    return json == null ? null : Phrase.fromJson(json);
   }
 
-  static Future<List<User>> getAll() async {
-    if (_userSheet == null) return <User>[];
+  static Future<List<Phrase>> getAll() async {
+    if (_phraseSheet == null) return <Phrase>[];
 
-    final users = await _userSheet!.values.map.allRows();
-    return users == null ? <User>[] : users.map(User.fromJson).toList();
+    final phrases = await _phraseSheet!.values.map.allRows();
+    return phrases == null ? <Phrase>[] : phrases.map(Phrase.fromJson).toList();
   }
 
   static Future<Worksheet> _getWorkSheet(Spreadsheet spreadsheet,

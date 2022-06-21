@@ -26,7 +26,6 @@ class _Newsfeed extends State<Newsfeed> {
 
   Future getUsers() async {
     final users = await UserSheetsApi.getAll();
-    print(users.length);
     setState(() {
       this.users = users;
     });
