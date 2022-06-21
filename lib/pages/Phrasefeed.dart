@@ -39,10 +39,11 @@ class _Phrasefeed extends State<Phrasefeed> {
         child: ListView.builder(
           itemCount: phrases.length,
           itemBuilder: (context, index) {
-            final icon = Icon(Icons.email, color: Colors.red, size: 30);
+            final icon = Icon(Icons.lightbulb, color: Colors.red, size: 30);
             return ListTile(
               title: Text(phrases[index].vi),
               subtitle: Text(phrases[index].en),
+              isThreeLine: true,
               leading: icon,
             );
           },
