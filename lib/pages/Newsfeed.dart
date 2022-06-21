@@ -32,8 +32,6 @@ class _Newsfeed extends State<Newsfeed> {
     });
   }
 
-  var list = ["one", "two", "three", "four"];
-
   @override
   Widget build(BuildContext context) {
     final items = List<String>.generate(10, (i) => "Item $i");
@@ -49,6 +47,8 @@ class _Newsfeed extends State<Newsfeed> {
             return ListTile(
               title: Text(users[index].name),
               subtitle: Text(users[index].email),
+              selected: users[index].isNoob == 'false' ? true : false,
+              enabled: users[index].isNoob == 'false' ? true : false,
               leading: icon,
             );
           },

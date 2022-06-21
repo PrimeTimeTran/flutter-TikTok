@@ -1,19 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:worldlingo3/pages/Newsfeed.dart';
 import 'package:worldlingo3/pages/VietnamPage.dart';
 import 'package:worldlingo3/navigation/TabNav.dart';
 
+class DrawerNav extends StatefulWidget {
+  const DrawerNav({Key? key}) : super(key: key);
 
-class DrawerNav extends StatelessWidget {
-  const DrawerNav({Key? key, required this.title}) : super(key: key);
-  final String title;
+  @override
+  State<DrawerNav> createState() => _DrawerNav();
+}
+
+class _DrawerNav extends State<DrawerNav> {
+  int currentIdx = 0;
+
+  final screens = [
+    Newsfeed(),
+    Center(child: Text('2nd')),
+    Center(child: Text('3nd')),
+    Center(child: Text('2nd')),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // title: const Text('World Wide Words'),
+        title: const Text('Newsfeed'),
       ),
-      body: const TabNav(),
+      body: IndexedStack(
+        children: screens,
+        index: currentIdx,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: (idx) => setState(() {
+                currentIdx = idx;
+              }),
+          currentIndex: currentIdx,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.business), label: 'Business'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: 'Favorite'),
+          ]),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
