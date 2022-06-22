@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/model/phrase.dart';
@@ -40,7 +42,9 @@ class _Phrasefeed extends State<Phrasefeed> {
           padding: const EdgeInsets.all(10.0),
           itemCount: phrases.length,
           itemBuilder: (context, index) {
-
+            var date = phrases[index].id.split(' ')[0];
+            var year = date.split('-');
+            var humanReadable = '${year[1]}/${year[2]}/${year[0]}';
             return CustomListTile(
               thumbnail: Container(
                 decoration: const BoxDecoration(color: Colors.pink),
@@ -49,8 +53,8 @@ class _Phrasefeed extends State<Phrasefeed> {
               subtitle: phrases[index].vi,
               // 'This text should max out at two lines and clip',
               author: phrases[index].author,
-              publishDate: 'Dec 28',
-              readDuration: '5 mins',
+              publishDate: humanReadable,
+              readDuration: '',
             );
           },
         ),
@@ -118,7 +122,7 @@ class _ArticleDescription extends StatelessWidget {
                 ),
               ),
               Text(
-                '$publishDate - $readDuration',
+                '$publishDate',
                 style: const TextStyle(
                   fontSize: 12.0,
                   color: Colors.black54,
