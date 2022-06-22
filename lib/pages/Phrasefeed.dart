@@ -42,9 +42,8 @@ class _Phrasefeed extends State<Phrasefeed> {
           padding: const EdgeInsets.all(10.0),
           itemCount: phrases.length,
           itemBuilder: (context, index) {
-            var date = phrases[index].id.split(' ')[0];
-            var year = date.split('-');
-            var humanReadable = '${year[1]}/${year[2]}/${year[0]}';
+            var date = phrases[index].id.split(' ')[0].split('-');
+            var humanReadable = '${date[1]}/${date[2]}/${date[0]}';
             return CustomListTile(
               thumbnail: Container(
                 decoration: const BoxDecoration(color: Colors.pink),
@@ -52,7 +51,9 @@ class _Phrasefeed extends State<Phrasefeed> {
               title: phrases[index].en,
               subtitle: phrases[index].vi,
               // 'This text should max out at two lines and clip',
-              author: phrases[index].author,
+              author: phrases[index].author.isEmpty
+                  ? 'Anonymous'
+                  : phrases[index].author,
               publishDate: humanReadable,
               readDuration: '',
             );
@@ -110,25 +111,28 @@ class _ArticleDescription extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                author,
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black87,
+          child: Container(
+            alignment: Alignment.bottomRight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  '- $author',
+                  style: const TextStyle(
+                    fontSize: 12.0,
+                    color: Colors.black87,
+                  ),
                 ),
-              ),
-              Text(
-                '$publishDate',
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black54,
+                Text(
+                  '$publishDate',
+                  style: const TextStyle(
+                    fontSize: 12.0,
+                    color: Colors.black54,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

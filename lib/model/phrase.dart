@@ -4,7 +4,7 @@ class PhraseFields {
   static const String id = 'id';
   static const String vi = 'vi';
   static const String en = 'en';
-  static const String author = 'author';
+  static const String author = 'Author';
 
   static List<String> getFields() => [id, vi, en, author];
 }
