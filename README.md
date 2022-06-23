@@ -9,6 +9,10 @@ A few projects to understand Flutter.
 - Drawer navigator
 - Drawer items
 - Navigator pop with context
+- Bottom tab navigator
+- Custom launcher icon
+- Custom splash screen background
+- Google sheets api call
 
 ```dart
 class Box extends StatelessWidget {

@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/model/phrase.dart';
@@ -125,7 +121,7 @@ class _ArticleDescription extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '$publishDate',
+                  publishDate,
                   style: const TextStyle(
                     fontSize: 12.0,
                     color: Colors.black54,

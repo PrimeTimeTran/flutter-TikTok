@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
-import 'package:worldlingo3/widgets/Box.dart';
-import 'package:worldlingo3/pages/VietnamPage.dart';
 import 'package:worldlingo3/model/user.dart';
 import 'package:worldlingo3/api/sheets/user_sheets_api.dart';
 
@@ -38,11 +35,11 @@ class _Newsfeed extends State<Newsfeed> {
       length: 3,
       child: Container(
         color: Colors.white,
-        padding: const EdgeInsets.all(5),
+        padding: EdgeInsets.all(5),
         child: ListView.builder(
           itemCount: users.length,
           itemBuilder: (context, index) {
-            final icon = Icon(Icons.email, color: Colors.red, size: 30);
+            const icon = Icon(Icons.email, color: Colors.red, size: 30);
             return ListTile(
               title: Text(users[index].name),
               subtitle: Text(users[index].email),
