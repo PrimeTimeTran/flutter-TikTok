@@ -15,14 +15,9 @@ class _FooPage extends State<FooPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: const Text('Vietnam Page'),
-      ),
       body: Center(child: Text('You have pressed the button $_count times.')),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
-        // onPressed: () => setState(() => _count++),
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const VietnamPage2()),

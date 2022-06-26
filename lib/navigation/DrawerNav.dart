@@ -35,10 +35,26 @@ title(int currentIdx) {
 
 bottomTabs() {
   return const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Users'),
-    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Phrases'),
-    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'TikTok'),
-    BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Foo'),
+    BottomNavigationBarItem(
+      label: 'Users',
+      icon: Icon(Icons.home),
+      backgroundColor: Colors.green,
+    ),
+    BottomNavigationBarItem(
+      label: 'Phrases',
+      icon: Icon(Icons.business),
+      backgroundColor: Colors.green,
+    ),
+    BottomNavigationBarItem(
+      label: 'TikTok',
+      icon: Icon(Icons.business),
+      backgroundColor: Colors.green,
+    ),
+    BottomNavigationBarItem(
+      label: 'Foo',
+      icon: Icon(Icons.favorite),
+      backgroundColor: Colors.green,
+    ),
   ];
 }
 
@@ -58,18 +74,21 @@ class _DrawerNav extends State<DrawerNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: title(currentIdx),
+        title: currentIdx != 2 ? title(currentIdx) : null,
+        toolbarHeight: currentIdx != 2 ? kToolbarHeight : 0.0,
       ),
       body: IndexedStack(
         index: currentIdx,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: currentIdx,
-          fixedColor: Colors.deepOrange,
-          unselectedItemColor: Colors.black87,
-          onTap: (idx) => setState(() => currentIdx = idx),
-          items: bottomTabs()),
+        items: bottomTabs(),
+        currentIndex: currentIdx,
+        unselectedItemColor: Colors.white,
+        type: BottomNavigationBarType.shifting,
+        selectedItemColor: Colors.deepOrange,
+        onTap: (idx) => setState(() => currentIdx = idx),
+      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
