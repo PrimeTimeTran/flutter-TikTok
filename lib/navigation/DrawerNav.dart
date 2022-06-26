@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:worldlingo3/pages/NewsPage.dart';
 import 'package:worldlingo3/pages/PhrasePage.dart';
+import 'package:worldlingo3/pages/TikTokPage.dart';
 import 'package:worldlingo3/pages/FooPage.dart';
 
 class DrawerNav extends StatefulWidget {
@@ -16,30 +17,56 @@ class _DrawerNav extends State<DrawerNav> {
   final screens = [
     const NewsPage(),
     const PhrasePage(),
+    const TikTokPage(),
     const FooPage(),
   ];
+
+  title() {
+    switch (currentIdx) {
+      case 1:
+        {
+          return const Text('Users');
+        }
+      case 2:
+        {
+          return const Text('Phrases');
+        }
+      case 3:
+        {
+          return const Text('TikTok');
+        }
+
+      default:
+        {
+          return const Text('Foo');
+        }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Newsfeed'),
+        title: title(),
       ),
       body: IndexedStack(
         index: currentIdx,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+          fixedColor: Colors.deepOrange,
+          unselectedItemColor: Colors.black87,
           onTap: (idx) => setState(() {
                 currentIdx = idx;
               }),
           currentIndex: currentIdx,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Users'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.business), label: 'Business'),
+                icon: Icon(Icons.business), label: 'Phrases'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: 'Favorite'),
+                icon: Icon(Icons.business), label: 'TikTok'),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Foo'),
           ]),
       drawer: Drawer(
         child: ListView(
