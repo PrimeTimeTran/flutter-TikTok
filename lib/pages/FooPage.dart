@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:worldlingo3/widgets/Box.dart';
 import 'package:worldlingo3/pages/VietnamPage2.dart';
 
-class VietnamPage extends StatefulWidget {
-  const VietnamPage({Key? key}) : super(key: key);
+class FooPage extends StatefulWidget {
+  const FooPage({Key? key}) : super(key: key);
 
   @override
-  State<VietnamPage> createState() => _VietnamPage();
+  State<FooPage> createState() => _FooPage();
 }
 
-class _VietnamPage extends State<VietnamPage> {
-  int _count = 0;
+class _FooPage extends State<FooPage> {
+  final int _count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class _VietnamPage extends State<VietnamPage> {
           MaterialPageRoute(builder: (context) => const VietnamPage2()),
         ),
         tooltip: 'Increment Counter',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.navigate_next),
       ),
     );
   }

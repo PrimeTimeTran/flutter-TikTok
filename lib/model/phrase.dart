@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class PhraseFields {
   static const String id = 'id';
   static const String vi = 'vi';

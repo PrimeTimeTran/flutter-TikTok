@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:worldlingo3/pages/Newsfeed.dart';
-import 'package:worldlingo3/pages/Phrasefeed.dart';
-import 'package:worldlingo3/pages/VietnamPage.dart';
-import 'package:worldlingo3/navigation/TabNav.dart';
+import 'package:worldlingo3/pages/NewsPage.dart';
+import 'package:worldlingo3/pages/PhrasePage.dart';
+import 'package:worldlingo3/pages/FooPage.dart';
 
 class DrawerNav extends StatefulWidget {
   const DrawerNav({Key? key}) : super(key: key);
@@ -15,9 +14,9 @@ class _DrawerNav extends State<DrawerNav> {
   int currentIdx = 1;
 
   final screens = [
-    Newsfeed(),
-    Phrasefeed(),
-    Center(child: Text('3nd')),
+    const NewsPage(),
+    const PhrasePage(),
+    const FooPage(),
   ];
 
   @override
@@ -27,8 +26,8 @@ class _DrawerNav extends State<DrawerNav> {
         title: const Text('Newsfeed'),
       ),
       body: IndexedStack(
-        children: screens,
         index: currentIdx,
+        children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
           onTap: (idx) => setState(() {
@@ -66,7 +65,7 @@ class _DrawerNav extends State<DrawerNav> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const VietnamPage()),
+                  MaterialPageRoute(builder: (context) => const FooPage()),
                 );
               },
             ),

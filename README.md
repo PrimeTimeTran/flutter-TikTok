@@ -12,7 +12,8 @@ A few projects to understand Flutter.
 - Bottom tab navigator
 - Custom launcher icon
 - Custom splash screen background
-- Google sheets api call
+- Google sheets API call
+- Fixed Vim error
 
 ```dart
 class Box extends StatelessWidget {

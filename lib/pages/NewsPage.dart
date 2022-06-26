@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:worldlingo3/model/user.dart';
 import 'package:worldlingo3/api/sheets/user_sheets_api.dart';
 
-class Newsfeed extends StatefulWidget {
-  const Newsfeed({Key? key}) : super(key: key);
+class NewsPage extends StatefulWidget {
+  const NewsPage({Key? key}) : super(key: key);
 
   @override
-  State<Newsfeed> createState() => _Newsfeed();
+  State<NewsPage> createState() => _NewsPage();
 }
 
-class _Newsfeed extends State<Newsfeed> {
+class _NewsPage extends State<NewsPage> {
   List<User> users = [];
 
   @override

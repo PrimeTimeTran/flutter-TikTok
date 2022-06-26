@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:worldlingo3/model/phrase.dart';
 import 'package:worldlingo3/api/sheets/phrase_sheets_api.dart';
 
-class Phrasefeed extends StatefulWidget {
-  const Phrasefeed({Key? key}) : super(key: key);
+class PhrasePage extends StatefulWidget {
+  const PhrasePage({Key? key}) : super(key: key);
 
   @override
-  State<Phrasefeed> createState() => _Phrasefeed();
+  State<PhrasePage> createState() => _PhrasePage();
 }
 
-class _Phrasefeed extends State<Phrasefeed> {
+class _PhrasePage extends State<PhrasePage> {
   List<Phrase> phrases = [];
 
   @override

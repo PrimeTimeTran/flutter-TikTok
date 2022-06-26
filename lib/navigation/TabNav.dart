@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:worldlingo3/pages/Newsfeed.dart';
+import 'package:worldlingo3/pages/NewsPage.dart';
 
 class TabNav extends StatefulWidget {
   const TabNav({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class _TabNav extends State<TabNav> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Newsfeed(),
+    NewsPage(),
     Text(
       'Index 1: Business',
       style: optionStyle,
