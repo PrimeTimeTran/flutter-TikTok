@@ -11,8 +11,39 @@ class DrawerNav extends StatefulWidget {
   State<DrawerNav> createState() => _DrawerNav();
 }
 
+title(int currentIdx) {
+  switch (currentIdx) {
+    case 0:
+      {
+        return const Text('Users');
+      }
+    case 1:
+      {
+        return const Text('Phrases');
+      }
+    case 2:
+      {
+        return const Text('TikTok');
+      }
+
+    default:
+      {
+        return const Text('Foo');
+      }
+  }
+}
+
+bottomTabs() {
+  return const [
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Users'),
+    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Phrases'),
+    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'TikTok'),
+    BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Foo'),
+  ];
+}
+
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 1;
+  int currentIdx = 2;
 
   final screens = [
     const NewsPage(),
@@ -21,53 +52,24 @@ class _DrawerNav extends State<DrawerNav> {
     const FooPage(),
   ];
 
-  title() {
-    switch (currentIdx) {
-      case 1:
-        {
-          return const Text('Users');
-        }
-      case 2:
-        {
-          return const Text('Phrases');
-        }
-      case 3:
-        {
-          return const Text('TikTok');
-        }
 
-      default:
-        {
-          return const Text('Foo');
-        }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: title(),
+        title: title(currentIdx),
       ),
       body: IndexedStack(
         index: currentIdx,
         children: screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIdx,
           fixedColor: Colors.deepOrange,
           unselectedItemColor: Colors.black87,
-          onTap: (idx) => setState(() {
-                currentIdx = idx;
-              }),
-          currentIndex: currentIdx,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Users'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.business), label: 'Phrases'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.business), label: 'TikTok'),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Foo'),
-          ]),
+          onTap: (idx) => setState(() => currentIdx = idx),
+          items: bottomTabs()),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
