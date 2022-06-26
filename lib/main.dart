@@ -13,13 +13,11 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  static const appTitle = 'World Wide Words';
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: appTitle,
       home: DrawerNav(),
     );
   }

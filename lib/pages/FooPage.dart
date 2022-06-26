@@ -17,12 +17,12 @@ class _FooPage extends State<FooPage> {
     return Scaffold(
       body: Center(child: Text('You have pressed the button $_count times.')),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Increment Counter',
         backgroundColor: Colors.red,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const VietnamPage2()),
         ),
-        tooltip: 'Increment Counter',
         child: const Icon(Icons.navigate_next),
       ),
     );
