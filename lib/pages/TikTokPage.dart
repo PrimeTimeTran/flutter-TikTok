@@ -30,9 +30,29 @@ class _TikTokPageState extends State<TikTokPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
+          Container(
+            padding: const EdgeInsets.only(top: 5),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [Text('Hi'), Text('World')]),
+              children: const [
+                Text(
+                  'Following',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(width: 20),
+                Text(
+                  'For You',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Container(
             padding: const EdgeInsets.only(right: 10, bottom: 20),
             child: Row(
@@ -41,13 +61,13 @@ class _TikTokPageState extends State<TikTokPage> {
                 Column(
                   children: const [
                     CustomIcon(icon: Icons.account_circle_rounded),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     CustomIcon(icon: Icons.favorite),
-                    SizedBox(height: 5),
+                    SizedBox(height: 10),
                     CustomIcon(icon: Icons.message),
-                    SizedBox(height: 5),
+                    SizedBox(height: 10),
                     CustomIcon(icon: Icons.share),
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
                     CustomIcon(icon: Icons.library_music),
                   ],
                 ),
