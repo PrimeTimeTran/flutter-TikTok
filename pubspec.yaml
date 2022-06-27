@@ -36,6 +36,8 @@ dependencies:
   gsheets: ^0.4.2
   flutter_launcher_icons: ^0.9.3
   flutter_native_splash: ^2.2.3+1
+  video_player: ^2.4.5
+  webview_flutter: ^3.0.4
 
 flutter_icons:
   image_path_android: "assets/icon/icon-710x599-android.png"

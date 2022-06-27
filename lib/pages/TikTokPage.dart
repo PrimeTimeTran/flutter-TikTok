@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class TikTokPage extends StatefulWidget {
   const TikTokPage({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class CustomIcon extends StatelessWidget {
     );
   }
 }
+
 class VideoContainer extends StatelessWidget {
   const VideoContainer({Key? key, required this.title, required this.desc})
       : super(key: key);
@@ -34,29 +36,43 @@ class VideoContainer extends StatelessWidget {
         height: height - (kToolbarHeight + 20),
         width: 500,
         color: Colors.black87,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 500,
+              width: 400,
+              decoration: const BoxDecoration(color: Colors.red),
+              child: const SizedBox(
+                height: 500,
+                width: 500,
+                // child: VideoPlayerScreen(),
               ),
-              const SizedBox(height: 10),
-              Text(
-                desc,
-                style: const TextStyle(
-                  color: Colors.white,
-                  // fontWeight: FontWeight.bold,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    desc,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      // fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -152,5 +168,138 @@ class _TikTokPageState extends State<TikTokPage> {
         ),
       ],
     );
+  }
+}
+
+class VideoPlayerApp extends StatelessWidget {
+  const VideoPlayerApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Video Player Demo',
+      home: VideoPlayerScreen(),
+    );
+  }
+}
+
+class VideoPlayerScreen extends StatefulWidget {
+  const VideoPlayerScreen({super.key});
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Create and store the VideoPlayerController. The VideoPlayerController
+    // offers several different constructors to play videos from assets, files,
+    // or the internet.
+    _controller = VideoPlayerController.network(
+      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+    );
+
+    // Initialize the controller and store the Future for later use.
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    // Use the controller to loop the video.
+    _controller.setLooping(true);
+  }
+
+  @override
+  void dispose() {
+    // Ensure disposing of the VideoPlayerController to free up resources.
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        // Use a FutureBuilder to display a loading spinner while waiting for the
+        // VideoPlayerController to finish initializing.
+        body: FutureBuilder(
+          future: _initializeVideoPlayerFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              // If the VideoPlayerController has finished initialization, use
+              // the data it provides to limit the aspect ratio of the video.
+              return AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                // Use the VideoPlayer widget to display the video.
+                child: VideoPlayer(_controller),
+              );
+            } else {
+              // If the VideoPlayerController is still initializing, show a
+              // loading spinner.
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Wrap the play or pause in a call to `setState`. This ensures the
+            // correct icon is shown.
+            setState(() {
+              // If the video is playing, pause it.
+              if (_controller.value.isPlaying) {
+                _controller.pause();
+              } else {
+                // If the video is paused, play it.
+                _controller.play();
+              }
+            });
+          },
+          child: Container(
+            padding: const EdgeInsets.only(right: 10, bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column(
+                  children: const [
+                    CustomIcon(icon: Icons.account_circle_rounded),
+                    SizedBox(height: 10),
+                    CustomIcon(icon: Icons.favorite),
+                    SizedBox(height: 10),
+                    CustomIcon(icon: Icons.message),
+                    SizedBox(height: 10),
+                    CustomIcon(icon: Icons.share),
+                    SizedBox(height: 30),
+                    CustomIcon(icon: Icons.library_music),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     // Wrap the play or pause in a call to `setState`. This ensures the
+        //     // correct icon is shown.
+        //     setState(() {
+        //       // If the video is playing, pause it.
+        //       if (_controller.value.isPlaying) {
+        //         _controller.pause();
+        //       } else {
+        //         // If the video is paused, play it.
+        //         _controller.play();
+        //       }
+        //     });
+        //   },
+        //   // Display the correct icon depending on the state of the player.
+        //   child: Icon(
+        //     _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+        //   ),
+        // ),
+        );
   }
 }

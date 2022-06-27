@@ -4,7 +4,7 @@ A few projects to understand Flutter.
 
 ![demo](./demo.gif)
 
-- Layouts
+- Layouts(Drawer & Tab)
 - Instantiate class with Color class as input parameter.
 - Drawer navigator
 - Drawer items
@@ -13,7 +13,7 @@ A few projects to understand Flutter.
 - Custom launcher icon
 - Custom splash screen background
 - Google sheets API call
-- Fixed Vim error
+- TikTok scroll page
 
 ```dart
 class Box extends StatelessWidget {
