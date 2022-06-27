@@ -34,7 +34,7 @@ class _NewsPage extends State<NewsPage> {
     return DefaultTabController(
       length: 3,
       child: Container(
-        color: Colors.white,
+        color: Colors.black12,
         padding: EdgeInsets.all(5),
         child: ListView.builder(
           itemCount: users.length,
