@@ -16,9 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: DrawerNav(),
+      home: const DrawerNav(),
     );
   }
 }

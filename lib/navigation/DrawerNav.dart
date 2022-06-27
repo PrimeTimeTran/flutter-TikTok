@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:worldlingo3/pages/NewsPage.dart';
 import 'package:worldlingo3/pages/PhrasePage.dart';
 import 'package:worldlingo3/pages/TikTokPage.dart';
-import 'package:worldlingo3/pages/FooPage.dart';
+import 'package:worldlingo3/pages/InboxPage.dart';
+import 'package:worldlingo3/pages/ProfilePage.dart';
+
+import 'package:worldlingo3/widgets/CustomTabIcon.dart';
+
 
 class DrawerNav extends StatefulWidget {
   const DrawerNav({Key? key}) : super(key: key);
@@ -15,20 +19,24 @@ title(int currentIdx) {
   switch (currentIdx) {
     case 0:
       {
-        return const Text('Users');
+        return const Text('Home');
       }
     case 1:
       {
-        return const Text('Phrases');
+        return const Text('Discover');
       }
     case 2:
       {
         return const Text('TikTok');
       }
+    case 3:
+      {
+        return const Text('Inbox');
+      }
 
     default:
       {
-        return const Text('Foo');
+        return const Text('Profile');
       }
   }
 }
@@ -36,36 +44,37 @@ title(int currentIdx) {
 bottomTabs() {
   return const [
     BottomNavigationBarItem(
-      label: 'Users',
+      label: 'Home',
       icon: Icon(Icons.home),
-      backgroundColor: Colors.green,
     ),
     BottomNavigationBarItem(
-      label: 'Phrases',
-      icon: Icon(Icons.business),
-      backgroundColor: Colors.green,
+      label: 'Discover',
+      icon: Icon(Icons.arrow_circle_up_sharp),
     ),
     BottomNavigationBarItem(
-      label: 'TikTok',
-      icon: Icon(Icons.business),
-      backgroundColor: Colors.green,
+      icon: CustomTabIcon(),
+      label: '',
     ),
     BottomNavigationBarItem(
-      label: 'Foo',
-      icon: Icon(Icons.favorite),
-      backgroundColor: Colors.green,
+      label: 'Inbox',
+      icon: Icon(Icons.inbox),
+    ),
+    BottomNavigationBarItem(
+      label: 'Profile',
+      icon: Icon(Icons.account_box_rounded),
     ),
   ];
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 2;
+  int currentIdx = 0;
 
   final screens = [
     const NewsPage(),
     const PhrasePage(),
     const TikTokPage(),
-    const FooPage(),
+    const InboxPage(),
+    const ProfilePage(),
   ];
 
 
@@ -84,9 +93,9 @@ class _DrawerNav extends State<DrawerNav> {
       bottomNavigationBar: BottomNavigationBar(
         items: bottomTabs(),
         currentIndex: currentIdx,
-        unselectedItemColor: Colors.white,
-        type: BottomNavigationBarType.shifting,
-        selectedItemColor: Colors.deepOrange,
+        unselectedItemColor: Colors.white30,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
         onTap: (idx) => setState(() => currentIdx = idx),
       ),
       drawer: Drawer(
@@ -111,10 +120,10 @@ class _DrawerNav extends State<DrawerNav> {
             ListTile(
               title: const Text('🇻🇳 Vietnam'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const FooPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   // MaterialPageRoute(builder: (context) => const FooPage()),
+                // );
               },
             ),
             ListTile(
