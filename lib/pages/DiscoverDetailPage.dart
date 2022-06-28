@@ -18,7 +18,7 @@ class _DiscoverDetailPage extends State<DiscoverDetailPage> {
     return Scaffold(
       body: Center(
         child: Container(
-          padding: const EdgeInsets.only(top: 20),
+          // padding: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
               Hero(
