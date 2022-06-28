@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:worldlingo3/pages/NewsPage.dart';
-import 'package:worldlingo3/pages/PhrasePage.dart';
 import 'package:worldlingo3/pages/TikTokPage.dart';
+import 'package:worldlingo3/pages/DiscoverPage.dart';
+import 'package:worldlingo3/pages/PhrasePage.dart';
 import 'package:worldlingo3/pages/InboxPage.dart';
 import 'package:worldlingo3/pages/ProfilePage.dart';
 
 import 'package:worldlingo3/widgets/CustomTabIcon.dart';
-
 
 class DrawerNav extends StatefulWidget {
   const DrawerNav({Key? key}) : super(key: key);
@@ -67,12 +66,12 @@ bottomTabs() {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 0;
+  int currentIdx = 1;
 
   final screens = [
-    const NewsPage(),
-    const PhrasePage(),
     const TikTokPage(),
+    const DiscoverPage(),
+    const PhrasePage(),
     const InboxPage(),
     const ProfilePage(),
   ];

@@ -33,7 +33,7 @@ class VideoContainer extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     return SizedBox(
       child: Container(
-        height: height - (kToolbarHeight + 20),
+        // height: height - (kToolbarHeight + 20),
         width: 500,
         color: Colors.black87,
         child: Column(
