@@ -40,14 +40,14 @@ class _DiscoverPage extends State<DiscoverPage> {
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: MediaQuery.of(context).size.height / 5,
+                viewportFraction: 1,
                 autoPlayInterval: const Duration(seconds: 3),
+                height: MediaQuery.of(context).size.height / 5,
               ),
               items: [1, 2, 3].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return SizedBox(
-                      width: MediaQuery.of(context).size.width,
                       child: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(CustomPageRoute(
@@ -55,7 +55,17 @@ class _DiscoverPage extends State<DiscoverPage> {
                         },
                         child: Hero(
                           tag: 'banner-$i',
-                          child: Image.asset('assets/images/discover-hero.png'),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            // margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration:
+                                const BoxDecoration(color: Colors.amber),
+                            child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Image.asset(
+                                  'assets/images/discover-hero.png'),
+                            ),
+                          ),
                         ),
                       ),
                     );
