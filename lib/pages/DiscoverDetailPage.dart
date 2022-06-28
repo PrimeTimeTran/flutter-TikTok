@@ -21,7 +21,7 @@ class _DiscoverDetailPage extends State<DiscoverDetailPage> {
           child: Column(
             children: [
               Hero(
-                tag: 'banner',
+                tag: 'banner-1',
                 child: Image.asset('assets/images/discover-hero.png'),
               ),
               Container(

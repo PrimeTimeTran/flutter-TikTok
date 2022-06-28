@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
 
 class CustomPageRoute extends PageRouteBuilder {
@@ -36,20 +38,30 @@ class _DiscoverPage extends State<DiscoverPage> {
       body: Center(
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                    .push(CustomPageRoute(child: const DiscoverDetailPage()));
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) => const DiscoverDetailPage()),
-                // );
-              }, // Image tapped
-              child: Hero(
-                tag: 'banner',
-                child: Image.asset('assets/images/discover-hero.png'),
+            CarouselSlider(
+              options: CarouselOptions(
+                height: MediaQuery.of(context).size.height / 5,
+                autoPlayInterval: const Duration(seconds: 3),
               ),
+              items: [1, 2, 3].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(CustomPageRoute(
+                              child: const DiscoverDetailPage()));
+                        },
+                        child: Hero(
+                          tag: 'banner-$i',
+                          child: Image.asset('assets/images/discover-hero.png'),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
             ),
             Text('You have pressed the button $_count times.')
           ],

@@ -39,6 +39,7 @@ dependencies:
   video_player: ^2.4.5
   webview_flutter: ^3.0.4
   faker: ^2.0.0
+  carousel_slider: ^4.1.1
 
 flutter_icons:
   image_path_android: "assets/icon/icon-710x599-android.png"

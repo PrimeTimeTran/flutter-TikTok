@@ -76,8 +76,6 @@ class _DrawerNav extends State<DrawerNav> {
     const ProfilePage(),
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
