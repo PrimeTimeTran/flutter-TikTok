@@ -18,7 +18,6 @@ class _DiscoverDetailPage extends State<DiscoverDetailPage> {
     return Scaffold(
       body: Center(
         child: Container(
-          // padding: const EdgeInsets.only(top: 20),
           child: Column(
             children: [
               Hero(
@@ -38,7 +37,20 @@ class _DiscoverDetailPage extends State<DiscoverDetailPage> {
                   const SizedBox(height: 30),
                   Text(
                     fakerFa.lorem.sentences(5).join(' '),
-                  )
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        Center(
+                          child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Back')),
+                        ),
+                      ],
+                    ),
+                  ),
                 ]),
               )
             ],

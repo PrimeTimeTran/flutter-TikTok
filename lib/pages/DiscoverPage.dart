@@ -8,6 +8,7 @@ class CustomPageRoute extends PageRouteBuilder {
     required this.child,
   }) : super(
             transitionDuration: const Duration(seconds: 1),
+            reverseTransitionDuration: const Duration(seconds: 1),
             pageBuilder: (context, animation, secondaryAnimation) => child);
 
   @override
