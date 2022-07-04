@@ -245,6 +245,25 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('AppBar'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.home),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.call),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
+      ),
       body: ListView(
         children: [
           Column(
@@ -260,7 +279,13 @@ class _ProfilePage extends State<ProfilePage> {
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const Text('PrimeTimeTran'),
+                  const Text(
+                    "@primetimetran",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(30),
                     child: Row(
@@ -268,20 +293,53 @@ class _ProfilePage extends State<ProfilePage> {
                       children: [
                         Column(
                           children: const [
-                            Text("117"),
-                            Text("Following"),
+                            Text(
+                              "117",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Following",
+                              style: TextStyle(
+                                color: Colors.black54,
+                              ),
+                            ),
                           ],
                         ),
                         Column(
                           children: const [
-                            Text("117"),
-                            Text("Followers"),
+                            Text(
+                              "82",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Followers",
+                              style: TextStyle(
+                                color: Colors.black54,
+                              ),
+                            ),
                           ],
                         ),
                         Column(
                           children: const [
-                            Text("117"),
-                            Text("Likes"),
+                            Text(
+                              "249",
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Likes",
+                              style: TextStyle(
+                                color: Colors.black54,
+                              ),
+                            ),
                           ],
                         ),
                       ],

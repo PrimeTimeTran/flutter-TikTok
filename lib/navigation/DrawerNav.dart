@@ -79,10 +79,11 @@ class _DrawerNav extends State<DrawerNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: currentIdx != 2 ? title(currentIdx) : null,
-        toolbarHeight: currentIdx != 2 ? kToolbarHeight : 0.0,
-      ),
+      appBar: ![2, 4].contains(currentIdx)
+          ? AppBar(
+              title: currentIdx != 2 ? title(currentIdx) : null,
+            )
+          : null,
       body: IndexedStack(
         index: currentIdx,
         children: screens,
