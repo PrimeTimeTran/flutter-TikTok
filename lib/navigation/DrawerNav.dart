@@ -66,7 +66,7 @@ bottomTabs() {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 4;
+  int currentIdx = 0;
 
   final screens = [
     const TikTokPage(),
@@ -79,9 +79,10 @@ class _DrawerNav extends State<DrawerNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ![2, 4].contains(currentIdx)
+      appBar: ![0, 2, 4].contains(currentIdx)
           ? AppBar(
               title: currentIdx != 2 ? title(currentIdx) : null,
+              backgroundColor: Colors.transparent,
             )
           : null,
       body: IndexedStack(

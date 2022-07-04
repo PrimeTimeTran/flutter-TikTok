@@ -10,7 +10,6 @@ class Details extends StatefulWidget {
   _DetailsState createState() => _DetailsState();
 }
 
-
 class _DetailsState extends State<Details> {
   late HeroType _heroType;
   late double _screenHeight;
@@ -67,7 +66,7 @@ class _DetailsState extends State<Details> {
                     child: Container(
                       alignment: Alignment.bottomLeft,
                       child: Padding(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.only(bottom: 30, left: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -108,14 +107,52 @@ class _DetailsState extends State<Details> {
                     child: Container(
                       alignment: Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 15),
+                        padding: const EdgeInsets.only(right: 10),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
-                            Icon(Icons.person_pin_circle_sharp),
-                            Icon(Icons.heart_broken),
-                            Icon(Icons.message),
-                            Icon(Icons.share_sharp),
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Icon(Icons.person_pin_circle_sharp),
+                            Column(
+                              children: const [
+                                Icon(Icons.heart_broken),
+                                Text(
+                                  '904',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: const [
+                                Icon(Icons.message),
+                                Text(
+                                  '187',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: const [
+                                Icon(Icons.bookmark_outlined),
+                                Text(
+                                  '305',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Icon(Icons.share_sharp),
+                            const Icon(Icons.music_video),
                           ],
                         ),
                       ),
