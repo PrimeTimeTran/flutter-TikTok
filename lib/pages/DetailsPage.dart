@@ -48,11 +48,13 @@ class _DetailsState extends State<Details> {
                 width: _screenWidth,
                 height: 230.0,
                 child: Hero(
-                    tag: 'image${_heroType.title}',
-                    child: Image.asset(
-                      _heroType.image,
-                      fit: BoxFit.fitWidth,
-                    ))),
+                tag: 'image${_heroType.title}',
+                child: Image.network(
+                  _heroType.image,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
             Positioned(
                 top: 250.0,
                 left: 32.0,

@@ -191,9 +191,14 @@ class _NestedTabBarState extends State<NestedTabBar>
                           );
                         },
                         child: Container(
+                          // child: Hero(
+                          //   tag: 'image' + _heroTypeList[i].title,
+                          //   child: Image.asset(_heroTypeList[i].image,
+                          //       fit: BoxFit.cover),
+                          // ),
                           child: Hero(
                             tag: 'image' + _heroTypeList[i].title,
-                            child: Image.asset(_heroTypeList[i].image,
+                            child: Image.network(_heroTypeList[i].image,
                                 fit: BoxFit.cover),
                           ),
                           // child:
