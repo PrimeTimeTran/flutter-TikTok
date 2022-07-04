@@ -1,14 +1,9 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 import 'package:worldlingo3/classes/hero_type.dart';
 import 'package:worldlingo3/pages/VietnamPage2.dart';
 import 'package:worldlingo3/pages/DetailsPage.dart';
-
-final _random = Random();
-
-int randomNum() => 1 + _random.nextInt(75 - 1);
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -107,10 +102,6 @@ class _NestedTabBarState extends State<NestedTabBar>
     nestedTabController.dispose();
   }
 
-  getImageUrl() {
-    return "https://picsum.photos/250?image=${randomNum()}";
-  }
-
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -183,7 +174,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                                   Widget child) {
                                 return FadeTransition(
                                   opacity:
-                                      animation, // CurvedAnimation(parent: animation, curve: Curves.elasticInOut),
+                                      animation,
                                   child: child,
                                 );
                               },
@@ -191,18 +182,11 @@ class _NestedTabBarState extends State<NestedTabBar>
                           );
                         },
                         child: Container(
-                          // child: Hero(
-                          //   tag: 'image' + _heroTypeList[i].title,
-                          //   child: Image.asset(_heroTypeList[i].image,
-                          //       fit: BoxFit.cover),
-                          // ),
                           child: Hero(
                             tag: 'image' + _heroTypeList[i].title,
                             child: Image.network(_heroTypeList[i].image,
                                 fit: BoxFit.cover),
                           ),
-                          // child:
-                          //     Image.network(getImageUrl(), fit: BoxFit.cover),
                         ),
                       )
                   ],
