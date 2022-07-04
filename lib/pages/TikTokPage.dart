@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+
+import 'package:worldlingo3/classes/ContentType.dart';
 
 class TikTokPage extends StatefulWidget {
   const TikTokPage({Key? key}) : super(key: key);
@@ -22,93 +23,19 @@ class CustomIcon extends StatelessWidget {
   }
 }
 
-class VideoContainer extends StatelessWidget {
-  const VideoContainer({Key? key, required this.title, required this.desc})
-      : super(key: key);
-  final String title;
-  final String desc;
+class _TikTokPageState extends State<TikTokPage> {
+  late List _contentTypeList = <ContentType>[];
 
   @override
-  Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    return SizedBox(
-      child: Container(
-        width: 500,
-        color: Colors.black87,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 500,
-              width: 400,
-              decoration: const BoxDecoration(color: Colors.red),
-              child: const SizedBox(
-                height: 500,
-                width: 500,
-                // child: VideoPlayerScreen(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    desc,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  void initState() {
+    super.initState();
+    _contentTypeList = ContentType().createSampleList();
   }
-}
-
-class _TikTokPageState extends State<TikTokPage> {
-  final List<Widget> children = [
-    const VideoContainer(
-      title: "Apples 🍎",
-      desc: "Keep the doctors away",
-    ),
-    const VideoContainer(
-      title: "Banana 🍌",
-      desc: "Are good for the body & world",
-    ),
-    const VideoContainer(
-      title: "Carrot 🥕",
-      desc: "Are the favorites of a bunny 🐰",
-    ),
-    const VideoContainer(
-      title: "Dog 🐕",
-      desc: "Are mens best friend",
-    ),
-    const VideoContainer(
-      title: "Eagle 🦅",
-      desc: "Lead the fight to freedom",
-    ),
-    const VideoContainer(
-      title: "Fairy 🧚‍♀️",
-      desc: "Are magical creatures",
-    ),
-  ];
 
   PageController controller = PageController(initialPage: 0);
 
-  contentBuilder(color) {
+  contentBuilder(i, color) {
+    print(_contentTypeList);
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
@@ -131,26 +58,26 @@ class _TikTokPageState extends State<TikTokPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Text(
-                      'PrimeTimeTran',
-                      style: TextStyle(
+                    Text(
+                      _contentTypeList[i].creatorName,
+                      style: const TextStyle(
                           fontSize: 20,
                           color: Colors.white,
                           decoration: TextDecoration.none),
                     ),
-                    const Text(
-                      'PrimeTimeTran',
-                      style: TextStyle(
+                    Text(
+                      _contentTypeList[i].caption,
+                      style: const TextStyle(
                           fontSize: 15,
                           color: Colors.grey,
                           decoration: TextDecoration.none),
                     ),
                     Row(
-                      children: const [
-                        Icon(Icons.my_library_music),
+                      children: [
+                        const Icon(Icons.my_library_music),
                         Text(
-                          'PrimeTimeTran',
-                          style: TextStyle(
+                          _contentTypeList[i].soundTitle,
+                          style: const TextStyle(
                               fontSize: 15,
                               color: Colors.grey,
                               decoration: TextDecoration.none),
@@ -167,17 +94,17 @@ class _TikTokPageState extends State<TikTokPage> {
                 alignment: Alignment.centerRight,
                 height: height / 1.8,
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const Icon(Icons.person_pin_circle_sharp),
                       Column(
-                        children: const [
-                          Icon(Icons.heart_broken),
+                        children: [
+                          const Icon(Icons.heart_broken),
                           Text(
-                            '904',
-                            style: TextStyle(
+                            _contentTypeList[i].countLikes.toString(),
+                            style: const TextStyle(
                               fontSize: 15,
                               color: Colors.white,
                               decoration: TextDecoration.none,
@@ -186,11 +113,11 @@ class _TikTokPageState extends State<TikTokPage> {
                         ],
                       ),
                       Column(
-                        children: const [
-                          Icon(Icons.message),
+                        children: [
+                          const Icon(Icons.message),
                           Text(
-                            '187',
-                            style: TextStyle(
+                            _contentTypeList[i].countComments.toString(),
+                            style: const TextStyle(
                               fontSize: 15,
                               color: Colors.white,
                               decoration: TextDecoration.none,
@@ -199,11 +126,11 @@ class _TikTokPageState extends State<TikTokPage> {
                         ],
                       ),
                       Column(
-                        children: const [
-                          Icon(Icons.bookmark_outlined),
+                        children: [
+                          const Icon(Icons.bookmark_outlined),
                           Text(
-                            '305',
-                            style: TextStyle(
+                            _contentTypeList[i].countBookmarks.toString(),
+                            style: const TextStyle(
                               fontSize: 15,
                               color: Colors.white,
                               decoration: TextDecoration.none,
@@ -211,7 +138,19 @@ class _TikTokPageState extends State<TikTokPage> {
                           ),
                         ],
                       ),
-                      const Icon(Icons.share_sharp),
+                      Column(
+                        children: [
+                          const Icon(Icons.share_sharp),
+                          Text(
+                            _contentTypeList[i].countShares.toString(),
+                            style: const TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ],
+                      ),
                       const Icon(Icons.music_video),
                     ],
                   ),
@@ -226,218 +165,19 @@ class _TikTokPageState extends State<TikTokPage> {
 
   @override
   Widget build(BuildContext context) {
+    final gr = ContentType().createSampleList();
+    print(gr);
     return Stack(
       children: [
         PageView(
           controller: controller,
           scrollDirection: Axis.vertical,
           children: [
-            contentBuilder(Colors.red),
-            contentBuilder(Colors.amber),
-            contentBuilder(Colors.blue),
-            contentBuilder(Colors.lightBlue),
-            contentBuilder(Colors.lightGreen),
-            contentBuilder(Colors.limeAccent),
-            contentBuilder(Colors.red),
-            contentBuilder(Colors.indigo),
-            contentBuilder(Colors.cyan),
+            for (var i = 0; i < 30; i++) contentBuilder(i, Colors.pink),
           ],
         ),
         const Positioned(left: 20, top: 20, child: Text('ejejeje')),
       ],
     );
-
-    return Stack(
-      children: [
-        ListView.builder(
-          scrollDirection: Axis.vertical,
-          physics: const PageScrollPhysics(), // this for snapping
-          itemCount: children.length,
-          itemBuilder: (_, index) => children[index],
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    'Following',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Text(
-                    'For You',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(right: 10, bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    children: const [
-                      CustomIcon(icon: Icons.account_circle_rounded),
-                      SizedBox(height: 10),
-                      CustomIcon(icon: Icons.favorite),
-                      SizedBox(height: 10),
-                      CustomIcon(icon: Icons.message),
-                      SizedBox(height: 10),
-                      CustomIcon(icon: Icons.share),
-                      SizedBox(height: 30),
-                      CustomIcon(icon: Icons.library_music),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class VideoPlayerApp extends StatelessWidget {
-  const VideoPlayerApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Video Player Demo',
-      home: VideoPlayerScreen(),
-    );
-  }
-}
-
-class VideoPlayerScreen extends StatefulWidget {
-  const VideoPlayerScreen({super.key});
-
-  @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
-}
-
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Create and store the VideoPlayerController. The VideoPlayerController
-    // offers several different constructors to play videos from assets, files,
-    // or the internet.
-    _controller = VideoPlayerController.network(
-      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    );
-
-    // Initialize the controller and store the Future for later use.
-    _initializeVideoPlayerFuture = _controller.initialize();
-
-    // Use the controller to loop the video.
-    _controller.setLooping(true);
-  }
-
-  @override
-  void dispose() {
-    // Ensure disposing of the VideoPlayerController to free up resources.
-    _controller.dispose();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        // Use a FutureBuilder to display a loading spinner while waiting for the
-        // VideoPlayerController to finish initializing.
-        body: FutureBuilder(
-          future: _initializeVideoPlayerFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              // If the VideoPlayerController has finished initialization, use
-              // the data it provides to limit the aspect ratio of the video.
-              return AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                // Use the VideoPlayer widget to display the video.
-                child: VideoPlayer(_controller),
-              );
-            } else {
-              // If the VideoPlayerController is still initializing, show a
-              // loading spinner.
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Wrap the play or pause in a call to `setState`. This ensures the
-            // correct icon is shown.
-            setState(() {
-              // If the video is playing, pause it.
-              if (_controller.value.isPlaying) {
-                _controller.pause();
-              } else {
-                // If the video is paused, play it.
-                _controller.play();
-              }
-            });
-          },
-          child: Container(
-            padding: const EdgeInsets.only(right: 10, bottom: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  children: const [
-                    CustomIcon(icon: Icons.account_circle_rounded),
-                    SizedBox(height: 10),
-                    CustomIcon(icon: Icons.favorite),
-                    SizedBox(height: 10),
-                    CustomIcon(icon: Icons.message),
-                    SizedBox(height: 10),
-                    CustomIcon(icon: Icons.share),
-                    SizedBox(height: 30),
-                    CustomIcon(icon: Icons.library_music),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        )
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     // Wrap the play or pause in a call to `setState`. This ensures the
-        //     // correct icon is shown.
-        //     setState(() {
-        //       // If the video is playing, pause it.
-        //       if (_controller.value.isPlaying) {
-        //         _controller.pause();
-        //       } else {
-        //         // If the video is paused, play it.
-        //         _controller.play();
-        //       }
-        //     });
-        //   },
-        //   // Display the correct icon depending on the state of the player.
-        //   child: Icon(
-        //     _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        //   ),
-        // ),
-        );
   }
 }
