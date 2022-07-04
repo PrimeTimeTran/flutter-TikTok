@@ -1,3 +1,4 @@
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -15,10 +16,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  // const MyHomePage({Key key, this.title}) : super(key: key);
-
-  // final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -246,7 +243,40 @@ class _ProfilePage extends State<ProfilePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showAdaptiveActionSheet(
+                context: context,
+                actions: <BottomSheetAction>[
+                  BottomSheetAction(
+                    title: const Text(
+                      'Creator Tools',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onPressed: () {},
+                    leading:
+                        const Icon(Icons.phonelink_setup_outlined, size: 25),
+                  ),
+                  BottomSheetAction(
+                    title: const Text(
+                      'Settings & Privacy',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        // color: Colors.red,
+                      ),
+                    ),
+                    onPressed: () {},
+                    leading: const Icon(
+                      Icons.settings,
+                      size: 25,
+                    ),
+                  ),
+                ],
+              );
+            },
             icon: const Icon(Icons.remove_red_eye_outlined),
           ),
           IconButton(

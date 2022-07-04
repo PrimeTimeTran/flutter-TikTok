@@ -19,12 +19,10 @@ class _VietnamPage extends State<VietnamPage2> {
     debugPrint('Vietnam Page 2');
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.dark,
         title: const Text('Vietnam2 Page'),
       ),
       body: Center(child: Text('You have pressed the button $_count times.')),
       floatingActionButton: FloatingActionButton(
-        // backgroundColor: Colors.yellow,
         onPressed: () async {
           final user = {
             UserFields.id: 1,

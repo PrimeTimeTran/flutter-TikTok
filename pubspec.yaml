@@ -40,6 +40,7 @@ dependencies:
   webview_flutter: ^3.0.4
   faker: ^2.0.0
   carousel_slider: ^4.1.1
+  adaptive_action_sheet: ^2.0.1
 
 flutter_icons:
   image_path_android: "assets/icon/icon-710x599-android.png"
