@@ -30,72 +30,105 @@ class _DetailsState extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_heroType.title),
-        backgroundColor: _heroType.materialColor,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
-        ), 
-      ),
-      body: SafeArea(
-        child: Stack(
+    return Stack(
+      children: [
+        Hero(
+          tag: 'image${_heroType.title}',
+          child: Image.network(
+            height: double.infinity,
+            width: double.infinity,
+            _heroType.image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Hero(
-              tag: 'background${_heroType.title}',
-              child: Container(
-                color: _heroType.materialColor,
-              ),
-            ),
-            Positioned(
-              top: 0.0,
-              left: 0.0,
-              height: 230.0,
-              width: _screenWidth,
-              child: Hero(
-                tag: 'image${_heroType.title}',
-                child: Image.network(
-                  _heroType.image,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 250.0,
-              left: 32.0,
-              width: _screenWidth - 64.0,
-              child: Hero(
-                tag: 'text${_heroType.title}',
-                child: Material(
-                  color: Colors.transparent,
-                  child: Text(
-                    _heroType.title,
-                    style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: _heroType.materialColor.shade900),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 15),
+                  child: GestureDetector(
+                    child: const Icon(Icons.arrow_back),
+                    onTap: () => Navigator.of(context).pop(),
                   ),
-                ),
-              ),
+                )
+              ],
             ),
-            Positioned(
-                top: 280.0,
-                left: 32.0,
-                width: _screenWidth - 64.0,
-                child: Hero(
-                    tag: 'subtitle${_heroType.title}',
-                    child: Material(
-                        color: Colors.transparent,
-                        child: Text(
-                          _heroType.subTitle,
+            Container(
+              height: _screenHeight * .6,
+              alignment: Alignment.bottomCenter,
+              // color: Colors.grey.withOpacity(0.7),
+              color: Colors.transparent,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const Text(
+                              'PrimeTimeTran',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  decoration: TextDecoration.none),
+                            ),
+                            const Text(
+                              'PrimeTimeTran',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.none),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(Icons.my_library_music),
+                                Text(
+                                  'PrimeTimeTran',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.none),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: const [
+                            Icon(Icons.person_pin_circle_sharp),
+                            Icon(Icons.heart_broken),
+                            Icon(Icons.message),
+                            Icon(Icons.share_sharp),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
