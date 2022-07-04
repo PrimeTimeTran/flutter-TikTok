@@ -1,79 +1,15 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
 
-import 'package:worldlingo3/classes/hero_type.dart';
 import 'package:worldlingo3/pages/VietnamPage2.dart';
-import 'package:worldlingo3/pages/DetailsPage.dart';
+
+import 'package:worldlingo3/widgets/ProfileTile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePage();
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hello World"),
-      ),
-      bottomNavigationBar: Material(
-        color: Colors.white,
-        child: TabBar(
-            controller: _tabController,
-            indicatorColor: Colors.teal,
-            labelColor: Colors.teal,
-            unselectedLabelColor: Colors.black54,
-            tabs: const <Widget>[
-              Tab(
-                icon: Icon(Icons.home),
-              ),
-              Tab(
-                icon: Icon(Icons.email),
-              ),
-              Tab(
-                icon: Icon(Icons.settings),
-              ),
-            ]),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const <Widget>[
-          Center(
-            child: Text("Home"),
-          ),
-          Center(
-            child: Text("Email"),
-          ),
-          Center(
-            child: Text("Settings"),
-          )
-        ],
-      ),
-    );
-  }
 }
 
 class NestedTabBar extends StatefulWidget {
@@ -84,12 +20,10 @@ class NestedTabBar extends StatefulWidget {
 class _NestedTabBarState extends State<NestedTabBar>
     with TickerProviderStateMixin {
   late TabController nestedTabController;
-  List _heroTypeList = <HeroType>[];
 
   @override
   void initState() {
     super.initState();
-    _heroTypeList = HeroType().createSampleList();
 
     nestedTabController = TabController(length: 4, vsync: this);
   }
@@ -114,16 +48,20 @@ class _NestedTabBarState extends State<NestedTabBar>
             labelColor: Colors.grey.shade900,
             indicatorColor: Colors.grey.shade300,
             unselectedLabelColor: Colors.black54,
-            labelPadding: const EdgeInsets.symmetric(horizontal: 35),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 35.0),
             tabs: const <Widget>[
               Tab(
                 icon: Icon(Icons.grid_on_rounded),
               ),
               Tab(
-                icon: Icon(Icons.lock_outline),
+                icon: Icon(Icons.lock_outlined),
               ),
-              Tab(icon: Icon(Icons.heart_broken_outlined)),
-              Tab(icon: Icon(Icons.book_outlined)),
+              Tab(
+                icon: Icon(Icons.heart_broken_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.book_outlined),
+              ),
             ],
           ),
         ),
@@ -145,46 +83,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                   childAspectRatio: (9 / 10),
                   padding: const EdgeInsets.all(1),
                   children: <Widget>[
-                    for (var i = 0; i < 30; i++)
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              fullscreenDialog: true,
-                              transitionDuration:
-                                  const Duration(milliseconds: 250),
-                              pageBuilder: (BuildContext context,
-                                  Animation<double> animation,
-                                  Animation<double> secondaryAnimation) {
-                                return Details(
-                                  heroType: HeroType(
-                                      title: _heroTypeList[i].title,
-                                      subTitle: _heroTypeList[i].subTitle,
-                                      image: _heroTypeList[i].image,
-                                      materialColor:
-                                          _heroTypeList[i].materialColor),
-                                );
-                              },
-                              transitionsBuilder: (BuildContext context,
-                                  Animation<double> animation,
-                                  Animation<double> secondaryAnimation,
-                                  Widget child) {
-                                return FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
-                        },
-                        child: Container(
-                          child: Hero(
-                            tag: 'image' + _heroTypeList[i].title,
-                            child: Image.network(_heroTypeList[i].image,
-                                fit: BoxFit.cover),
-                          ),
-                        ),
-                      )
+                    for (var i = 0; i < 30; i++) ProfileTile(index: i)
                   ],
                 ),
               ),
