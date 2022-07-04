@@ -243,6 +243,7 @@ class _ProfilePage extends State<ProfilePage> {
         ),
         actions: [
           IconButton(
+            icon: const Icon(Icons.remove_red_eye_outlined),
             onPressed: () {
               showAdaptiveActionSheet(
                 context: context,
@@ -265,7 +266,6 @@ class _ProfilePage extends State<ProfilePage> {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                        // color: Colors.red,
                       ),
                     ),
                     onPressed: () {},
@@ -277,7 +277,6 @@ class _ProfilePage extends State<ProfilePage> {
                 ],
               );
             },
-            icon: const Icon(Icons.remove_red_eye_outlined),
           ),
           IconButton(
             onPressed: () {},
@@ -390,7 +389,7 @@ class _ProfilePage extends State<ProfilePage> {
             ],
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
             child: const Text(
               '💯☮️🙇🏻‍♂️🐒🤔👨🏻‍🎓🥋🧑🏻‍💻 👨🏻‍🏫 👨🏻‍🍳 ✍️🗽🦁🔫💂🏻‍♀️🌏🇺🇸🇻🇳🧙🏻‍♂️',
               textAlign: TextAlign.center,
