@@ -88,13 +88,16 @@ class _DrawerNav extends State<DrawerNav> {
         index: currentIdx,
         children: screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        child: BottomNavigationBar(
         items: bottomTabs(),
         currentIndex: currentIdx,
         unselectedItemColor: Colors.white30,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         onTap: (idx) => setState(() => currentIdx = idx),
+        ),
       ),
       drawer: Drawer(
         child: ListView(

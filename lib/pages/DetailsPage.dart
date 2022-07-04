@@ -10,9 +10,9 @@ class Details extends StatefulWidget {
   _DetailsState createState() => _DetailsState();
 }
 
+
 class _DetailsState extends State<Details> {
   late HeroType _heroType;
-  late double _screenWidth;
   late double _screenHeight;
 
   @override
@@ -24,7 +24,6 @@ class _DetailsState extends State<Details> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _screenWidth = MediaQuery.of(context).size.width;
     _screenHeight = MediaQuery.of(context).size.height;
   }
 
@@ -58,7 +57,6 @@ class _DetailsState extends State<Details> {
             Container(
               height: _screenHeight * .6,
               alignment: Alignment.bottomCenter,
-              // color: Colors.grey.withOpacity(0.7),
               color: Colors.transparent,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
