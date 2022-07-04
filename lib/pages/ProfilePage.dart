@@ -77,8 +77,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 }
 
 class NestedTabBar extends StatefulWidget {
-
-
   @override
   _NestedTabBarState createState() => _NestedTabBarState();
 }
@@ -105,7 +103,6 @@ class _NestedTabBarState extends State<NestedTabBar>
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    var size = MediaQuery.of(context).size;
 
     return Column(
       children: <Widget>[
@@ -173,8 +170,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                                   Animation<double> secondaryAnimation,
                                   Widget child) {
                                 return FadeTransition(
-                                  opacity:
-                                      animation,
+                                  opacity: animation,
                                   child: child,
                                 );
                               },
@@ -219,8 +215,6 @@ class _NestedTabBarState extends State<NestedTabBar>
 }
 
 class _ProfilePage extends State<ProfilePage> {
-  final int _count = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
