@@ -108,25 +108,30 @@ class _NestedTabBarState extends State<NestedTabBar>
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    var size = MediaQuery.of(context).size;
+
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        TabBar(
-          isScrollable: true,
-          labelColor: Colors.teal,
-          indicatorColor: Colors.teal,
-          controller: _nestedTabController,
-          unselectedLabelColor: Colors.black54,
-          tabs: const <Widget>[
-            Tab(
-              icon: Icon(Icons.grid_on_rounded),
-            ),
-            Tab(
-              icon: Icon(Icons.lock_outline),
-            ),
-            Tab(icon: Icon(Icons.heart_broken)),
-            Tab(icon: Icon(Icons.book_outlined)),
-          ],
+        SizedBox(
+          width: double.infinity,
+          child: TabBar(
+            isScrollable: true,
+            controller: _nestedTabController,
+            labelColor: Colors.grey.shade400,
+            indicatorColor: Colors.grey.shade700,
+            unselectedLabelColor: Colors.black54,
+            labelPadding: const EdgeInsets.symmetric(horizontal: 35),
+            tabs: const <Widget>[
+              Tab(
+                icon: Icon(Icons.grid_on_rounded),
+              ),
+              Tab(
+                icon: Icon(Icons.lock_outline),
+              ),
+              Tab(icon: Icon(Icons.heart_broken)),
+              Tab(icon: Icon(Icons.book_outlined)),
+            ],
+          ),
         ),
         SizedBox(
           height: screenHeight * 0.70,
@@ -140,10 +145,10 @@ class _NestedTabBarState extends State<NestedTabBar>
                 ),
                 child: GridView.count(
                   primary: false,
-                  padding: const EdgeInsets.all(1),
-                  crossAxisSpacing: 1,
-                  mainAxisSpacing: 1,
                   crossAxisCount: 3,
+                  mainAxisSpacing: 1,
+                  crossAxisSpacing: 1,
+                  padding: const EdgeInsets.all(1),
                   children: <Widget>[
                     Container(
                       child: Image.network(getImageUrl()),
