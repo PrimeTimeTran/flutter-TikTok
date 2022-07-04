@@ -152,7 +152,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                             PageRouteBuilder(
                               fullscreenDialog: true,
                               transitionDuration:
-                                  const Duration(milliseconds: 1000),
+                                  const Duration(milliseconds: 250),
                               pageBuilder: (BuildContext context,
                                   Animation<double> animation,
                                   Animation<double> secondaryAnimation) {

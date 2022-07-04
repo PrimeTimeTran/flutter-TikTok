@@ -6,7 +6,7 @@ final faker = Faker();
 final _random = Random();
 
 int randomNum() => 1 + _random.nextInt(75 - 1);
-String randomImage() => "https://picsum.photos/250?image=${randomNum()}";
+String randomImage() => "https://picsum.photos/1000?image=${randomNum()}";
 
 List colors = [
   Colors.red,
