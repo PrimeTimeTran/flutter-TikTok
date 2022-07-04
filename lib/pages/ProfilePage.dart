@@ -148,55 +148,71 @@ class _NestedTabBarState extends State<NestedTabBar>
                   crossAxisCount: 3,
                   mainAxisSpacing: 1,
                   crossAxisSpacing: 1,
+                  childAspectRatio: (9 / 12),
                   padding: const EdgeInsets.all(1),
                   children: <Widget>[
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                     Container(
-                      child: Image.network(getImageUrl()),
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
+                    ),
+                    Container(
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
+                    ),
+                    Container(
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
+                    ),
+                    Container(
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
+                    ),
+                    Container(
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
+                    ),
+                    Container(
+                      child: Image.network(getImageUrl(), fit: BoxFit.cover),
                     ),
                   ],
                 ),
