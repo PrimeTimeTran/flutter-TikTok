@@ -41,7 +41,7 @@ class _TikTokPageState extends State<TikTokPage> {
     return Container(
       width: width,
       height: height,
-      color: color,
+      color: _contentTypeList[i].materialColor,
       child: Container(
         alignment: Alignment.bottomCenter,
         color: Colors.transparent,
