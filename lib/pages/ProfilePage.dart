@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:worldlingo3/pages/VietnamPage2.dart';
+
 final _random = Random();
 
 int randomNum() => 1 + _random.nextInt(100 - 1);
@@ -147,67 +149,51 @@ class _NestedTabBarState extends State<NestedTabBar>
                   crossAxisCount: 3,
                   children: <Widget>[
                     Container(
-                      color: Colors.teal[100],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[200],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[300],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[400],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[500],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[600],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[100],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[200],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[300],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[400],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[500],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[600],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[100],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[200],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[300],
                       child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      color: Colors.teal[400],
                       child: Image.network(getImageUrl()),
                     ),
                   ],
@@ -248,19 +234,24 @@ class _ProfilePage extends State<ProfilePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('AppBar'),
+        title: const Text('Loi Tran'),
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.home),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const VietnamPage2()),
+            );
+          },
+          icon: const Icon(Icons.people_alt_outlined),
         ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.call),
+            icon: const Icon(Icons.remove_red_eye_outlined),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.more_vert),
+            icon: const Icon(Icons.menu),
           ),
         ],
       ),
@@ -272,11 +263,10 @@ class _ProfilePage extends State<ProfilePage> {
                 children: [
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 20),
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.circle,
+                    child: const CircleAvatar(
+                      radius: 48,
+                      backgroundImage:
+                          NetworkImage('https://picsum.photos/250?image=1'),
                     ),
                   ),
                   const Text(
@@ -358,7 +348,7 @@ class _ProfilePage extends State<ProfilePage> {
                               states.contains(MaterialState.pressed)) {
                             return Colors.blue.withOpacity(0.12);
                           }
-                          return null; // Defer to the widget's default.
+                          return null;
                         },
                       ),
                     ),
@@ -370,9 +360,11 @@ class _ProfilePage extends State<ProfilePage> {
             ],
           ),
           Container(
-            color: Colors.blue,
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: const Text('Hello World'),
+            child: const Text(
+              '💯☮️🙇🏻‍♂️🐒🤔👨🏻‍🎓🥋🧑🏻‍💻 👨🏻‍🏫 👨🏻‍🍳 ✍️🗽🦁🔫💂🏻‍♀️🌏🇺🇸🇻🇳🧙🏻‍♂️',
+              textAlign: TextAlign.center,
+            ),
           ),
           NestedTabBar(),
         ],
