@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+
+final _random = Random();
+
+int randomNum() => 1 + _random.nextInt(100 - 1);
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -88,7 +93,7 @@ class _NestedTabBarState extends State<NestedTabBar>
   void initState() {
     super.initState();
 
-    _nestedTabController = TabController(length: 5, vsync: this);
+    _nestedTabController = TabController(length: 4, vsync: this);
   }
 
   @override
@@ -97,39 +102,35 @@ class _NestedTabBarState extends State<NestedTabBar>
     _nestedTabController.dispose();
   }
 
+  getImageUrl() {
+    return "https://picsum.photos/250?image=${randomNum()}";
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         TabBar(
-          controller: _nestedTabController,
-          indicatorColor: Colors.teal,
-          labelColor: Colors.teal,
-          unselectedLabelColor: Colors.black54,
           isScrollable: true,
+          labelColor: Colors.teal,
+          indicatorColor: Colors.teal,
+          controller: _nestedTabController,
+          unselectedLabelColor: Colors.black54,
           tabs: const <Widget>[
             Tab(
-              text: "One",
+              icon: Icon(Icons.grid_on_rounded),
             ),
             Tab(
-              text: "Two",
+              icon: Icon(Icons.lock_outline),
             ),
-            Tab(
-              text: "Three",
-            ),
-            Tab(
-              text: "Four",
-            ),
-            Tab(
-              text: "Five",
-            ),
+            Tab(icon: Icon(Icons.heart_broken)),
+            Tab(icon: Icon(Icons.book_outlined)),
           ],
         ),
         SizedBox(
           height: screenHeight * 0.70,
-          // margin: const EdgeInsets.only(left: 16.0, right: 16.0),
           child: TabBarView(
             controller: _nestedTabController,
             children: <Widget>[
@@ -146,34 +147,68 @@ class _NestedTabBarState extends State<NestedTabBar>
                   crossAxisCount: 3,
                   children: <Widget>[
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[100],
-                      child: const Text("He'd have you all unravel at the"),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[200],
-                      child: const Text('Heed not the rabble'),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[300],
-                      child: const Text('Sound of screams but the'),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[400],
-                      child: const Text('Who scream'),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[500],
                       child: const Text('Revolution is coming...'),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8),
                       color: Colors.teal[600],
                       child: const Text('Revolution, they...'),
+                    ),
+                    Container(
+                      color: Colors.teal[100],
+                      child: const Text("He'd have you all unravel at the"),
+                    ),
+                    Container(
+                      color: Colors.teal[200],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[300],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[400],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[500],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[600],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[100],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[200],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[300],
+                      child: Image.network(getImageUrl()),
+                    ),
+                    Container(
+                      color: Colors.teal[400],
+                      child: Image.network(getImageUrl()),
                     ),
                   ],
                 ),
@@ -194,12 +229,6 @@ class _NestedTabBarState extends State<NestedTabBar>
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   color: Colors.indigoAccent,
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.redAccent,
                 ),
               ),
             ],
@@ -246,13 +275,13 @@ class _ProfilePage extends State<ProfilePage> {
                         Column(
                           children: const [
                             Text("117"),
-                            Text("Following"),
+                            Text("Followers"),
                           ],
                         ),
                         Column(
                           children: const [
                             Text("117"),
-                            Text("Following"),
+                            Text("Likes"),
                           ],
                         ),
                       ],
@@ -276,7 +305,7 @@ class _ProfilePage extends State<ProfilePage> {
                       ),
                     ),
                     onPressed: () {},
-                    child: const Text('TextButton'),
+                    child: const Text('Edit Profile'),
                   ),
                 ],
               )
