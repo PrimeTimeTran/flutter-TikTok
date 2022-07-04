@@ -137,7 +137,7 @@ class _NestedTabBarState extends State<NestedTabBar>
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.blueAccent,
+                  color: Colors.white,
                 ),
                 child: GridView.count(
                   primary: false,
@@ -164,15 +164,15 @@ class _NestedTabBarState extends State<NestedTabBar>
                     ),
                     Container(
                       color: Colors.teal[500],
-                      child: const Text('Revolution is coming...'),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
                       color: Colors.teal[600],
-                      child: const Text('Revolution, they...'),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
                       color: Colors.teal[100],
-                      child: const Text("He'd have you all unravel at the"),
+                      child: Image.network(getImageUrl()),
                     ),
                     Container(
                       color: Colors.teal[200],
