@@ -25,8 +25,8 @@ List colors = [
 
 class HeroType {
   String title;
-  String subTitle;
   String image;
+  String subTitle;
   MaterialColor materialColor;
 
   HeroType(
@@ -38,7 +38,7 @@ class HeroType {
 
   List<HeroType> createSampleList() {
     List<HeroType> heroType = <HeroType>[];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 30; i++) {
       heroType.add(
         HeroType(
             title: faker.job.title(),

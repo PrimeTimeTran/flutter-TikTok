@@ -13,6 +13,7 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   late HeroType _heroType;
   late double _screenWidth;
+  late double _screenHeight;
 
   @override
   void initState() {
@@ -24,6 +25,7 @@ class _DetailsState extends State<Details> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _screenWidth = MediaQuery.of(context).size.width;
+    _screenHeight = MediaQuery.of(context).size.height;
   }
 
   @override
@@ -32,6 +34,10 @@ class _DetailsState extends State<Details> {
       appBar: AppBar(
         title: Text(_heroType.title),
         backgroundColor: _heroType.materialColor,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ), 
       ),
       body: SafeArea(
         child: Stack(
@@ -43,11 +49,11 @@ class _DetailsState extends State<Details> {
               ),
             ),
             Positioned(
-                top: 0.0,
-                left: 0.0,
-                width: _screenWidth,
-                height: 230.0,
-                child: Hero(
+              top: 0.0,
+              left: 0.0,
+              height: 230.0,
+              width: _screenWidth,
+              child: Hero(
                 tag: 'image${_heroType.title}',
                 child: Image.network(
                   _heroType.image,
@@ -56,20 +62,23 @@ class _DetailsState extends State<Details> {
               ),
             ),
             Positioned(
-                top: 250.0,
-                left: 32.0,
-                width: _screenWidth - 64.0,
-                child: Hero(
-                    tag: 'text${_heroType.title}',
-                    child: Material(
-                        color: Colors.transparent,
-                        child: Text(
-                          _heroType.title,
-                          style: TextStyle(
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                              color: _heroType.materialColor.shade900),
-                        )))),
+              top: 250.0,
+              left: 32.0,
+              width: _screenWidth - 64.0,
+              child: Hero(
+                tag: 'text${_heroType.title}',
+                child: Material(
+                  color: Colors.transparent,
+                  child: Text(
+                    _heroType.title,
+                    style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        color: _heroType.materialColor.shade900),
+                  ),
+                ),
+              ),
+            ),
             Positioned(
                 top: 280.0,
                 left: 32.0,
@@ -80,7 +89,10 @@ class _DetailsState extends State<Details> {
                         color: Colors.transparent,
                         child: Text(
                           _heroType.subTitle,
-                        )))),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

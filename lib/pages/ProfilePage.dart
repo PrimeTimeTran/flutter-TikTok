@@ -148,7 +148,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                   childAspectRatio: (9 / 10),
                   padding: const EdgeInsets.all(1),
                   children: <Widget>[
-                    for (var i = 0; i < 10; i++)
+                    for (var i = 0; i < 30; i++)
                       GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
