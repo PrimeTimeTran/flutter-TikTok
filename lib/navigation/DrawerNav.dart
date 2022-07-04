@@ -90,13 +90,15 @@ class _DrawerNav extends State<DrawerNav> {
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
+        minimum: const EdgeInsets.only(bottom: 10),
         child: BottomNavigationBar(
-        items: bottomTabs(),
-        currentIndex: currentIdx,
-        unselectedItemColor: Colors.white30,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white,
-        onTap: (idx) => setState(() => currentIdx = idx),
+          elevation: 0,
+          items: bottomTabs(),
+          currentIndex: currentIdx,
+          unselectedItemColor: Colors.white30,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          onTap: (idx) => setState(() => currentIdx = idx),
         ),
       ),
       drawer: Drawer(
