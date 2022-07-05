@@ -23,7 +23,7 @@ class _ProfileTileState extends State<ProfileTile> {
 
   @override
   Widget build(BuildContext context) {
-    var i = widget.index;
+    final i = widget.index;
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
