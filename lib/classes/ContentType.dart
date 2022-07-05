@@ -62,6 +62,7 @@ class ContentType {
             soundTitle: faker.lorem.words(3).join(' '),
             countLikes: faker.randomGenerator.integer(50000, min: 100),
             countComments: faker.randomGenerator.integer(1000, min: 10),
+            countBookmarks: faker.randomGenerator.integer(2000, min: 10),
             countShares: faker.randomGenerator.integer(50000, min: 100),
             image: randomImage(),
             materialColor: colors[_random.nextInt(colors.length)]),
