@@ -26,7 +26,6 @@ Future main() async {
       coupon: '10PERCENTOFF');
       
   runApp(const MyApp());
-  // runApp(VideoApp());
 }
 
 class MyApp extends StatelessWidget {
