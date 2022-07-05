@@ -66,7 +66,7 @@ bottomTabs() {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 1;
+  int currentIdx = 2;
 
   final screens = [
     const TikTokPage(),
