@@ -35,7 +35,6 @@ class _TikTokPageState extends State<TikTokPage> {
   PageController controller = PageController(initialPage: 0);
 
   contentBuilder(i, color) {
-    print(_contentTypeList);
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Container(
@@ -165,8 +164,6 @@ class _TikTokPageState extends State<TikTokPage> {
 
   @override
   Widget build(BuildContext context) {
-    final gr = ContentType().createSampleList();
-    print(gr);
     return Stack(
       children: [
         PageView(

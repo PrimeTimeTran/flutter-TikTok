@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "204150920816",
+    "project_id": "world-lingo",
+    "storage_bucket": "world-lingo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204150920816:android:6097fb0a3f34a0c60a06b5",
+        "android_client_info": {
+          "package_name": "com.example.worldlingo3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204150920816-ubt6u82fbrkovd09nk0stpjm12h89vvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASpqRmfEweeK7TS4d4g6Y4mb6_0ju8M8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204150920816-ubt6u82fbrkovd09nk0stpjm12h89vvn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
