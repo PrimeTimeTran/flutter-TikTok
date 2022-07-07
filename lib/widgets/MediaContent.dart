@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
@@ -27,8 +28,14 @@ class _MediaContentState extends State<MediaContent> {
     _controller.setLooping(true);
     _controller.setVolume(.8);
 
+    // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
+    // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
-      // _controller.play();
+      if (kIsWeb || widget.index != 0) {
+        // running on the web!
+      } else {
+        _controller.play();
+      }
     });
   }
 
