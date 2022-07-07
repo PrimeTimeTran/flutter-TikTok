@@ -3,59 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
 
-class VideoApp extends StatefulWidget {
-  const VideoApp({Key? key, required this.url}) : super(key: key);
-  final String url;
-  @override
-  _VideoAppState createState() => _VideoAppState();
-}
-
-class _VideoAppState extends State<VideoApp> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    final url = widget.url;
-    super.initState();
-    _controller = VideoPlayerController.network(url)
-      ..initialize().then((_) {
-        setState(() {});
-      });
-    _controller.setLooping(true);
-    _controller.setVolume(.8);
-
-    Future.delayed(const Duration(milliseconds: 500), () {
-      _controller.play();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      title: 'Video Demo',
-      home: Scaffold(
-        body: Center(
-          child: _controller.value.isInitialized
-              ? SizedBox(
-                  height: height,
-                  width: width,
-                  child: VideoPlayer(_controller),
-                )
-              : Container(),
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-}
-
 class MediaContent extends StatefulWidget {
   const MediaContent({Key? key, required this.index}) : super(key: key);
   final int index;
@@ -81,7 +28,7 @@ class _MediaContentState extends State<MediaContent> {
     _controller.setVolume(.8);
 
     Future.delayed(const Duration(milliseconds: 500), () {
-      // _controller.play();
+      _controller.play();
     });
   }
 
@@ -91,13 +38,15 @@ class _MediaContentState extends State<MediaContent> {
     final height = MediaQuery.of(context).size.height;
     final i = widget.index;
     return GestureDetector(
+      onTap: () {
+        _controller.value.isPlaying ? _controller.pause() : _controller.play();
+      },
       child: Container(
         width: width,
         height: height,
         color: _contentTypeList[i].materialColor,
         child: Stack(
           children: [
-            // VideoApp(url: _contentTypeList[i].mediaUrl),
             _controller.value.isInitialized
                 ? SizedBox(
                     height: height,
@@ -226,10 +175,6 @@ class _MediaContentState extends State<MediaContent> {
           ],
         ),
       ),
-      onTap: () {
-        print('outside');
-        _controller.play();
-      },
     );
   }
 }
