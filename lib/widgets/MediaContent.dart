@@ -31,8 +31,10 @@ class _MediaContentState extends State<MediaContent> {
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
-      if (kIsWeb || widget.index != 0) {
-        // running on the web!
+      if (kIsWeb) {
+        if (widget.index != 0) {
+          _controller.play();
+        }
       } else {
         _controller.play();
       }
