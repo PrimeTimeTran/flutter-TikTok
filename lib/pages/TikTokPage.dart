@@ -21,8 +21,7 @@ class _TikTokPageState extends State<TikTokPage> {
 
 
   showAlertDialog(BuildContext context) {
-    // Create button
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
       child: const Text("OK"),
       onPressed: () {
         Navigator.of(context).pop();
