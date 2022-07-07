@@ -19,7 +19,6 @@ class _VideoAppState extends State<VideoApp> {
     super.initState();
     _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
     _controller.setLooping(true);
@@ -67,11 +66,23 @@ class MediaContent extends StatefulWidget {
 
 class _MediaContentState extends State<MediaContent> {
   late List _contentTypeList = <ContentType>[];
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
     _contentTypeList = ContentType().createSampleList();
+    _controller =
+        VideoPlayerController.network(_contentTypeList[widget.index].mediaUrl)
+          ..initialize().then((_) {
+            setState(() {});
+          });
+    _controller.setLooping(true);
+    _controller.setVolume(.8);
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      // _controller.play();
+    });
   }
 
   @override
@@ -85,7 +96,14 @@ class _MediaContentState extends State<MediaContent> {
       color: _contentTypeList[i].materialColor,
       child: Stack(
         children: [
-          VideoApp(url: _contentTypeList[i].mediaUrl),
+          // VideoApp(url: _contentTypeList[i].mediaUrl),
+          _controller.value.isInitialized
+              ? SizedBox(
+                  height: height,
+                  width: width,
+                  child: VideoPlayer(_controller),
+                )
+              : Container(),
           Container(
             alignment: Alignment.bottomCenter,
             color: Colors.transparent,
@@ -146,6 +164,7 @@ class _MediaContentState extends State<MediaContent> {
                             child: const Icon(Icons.person_pin_circle_sharp),
                             onTap: () {
                               print('Tapped to play');
+                              _controller.play();
                             },
                           ),
                           const Icon(Icons.person_pin_circle_sharp),
