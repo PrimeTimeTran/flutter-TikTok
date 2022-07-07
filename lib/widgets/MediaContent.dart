@@ -30,13 +30,6 @@ class _VideoAppState extends State<VideoApp> {
     });
   }
 
-  void myMethodIWantToCallFromAnotherWidget() {
-    print('calling myMethodIWantToCallFromAnotherWidget..');
-    // actual implementation here
-  }
-
-  
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -74,18 +67,11 @@ class MediaContent extends StatefulWidget {
 
 class _MediaContentState extends State<MediaContent> {
   late List _contentTypeList = <ContentType>[];
-  final GlobalKey<_MediaContentState> _myWidgetState =
-      GlobalKey<_MediaContentState>();
 
   @override
   void initState() {
     super.initState();
     _contentTypeList = ContentType().createSampleList();
-  }
-
-  void onSomeEvent() {
-    print('On Some Event');
-    // _myWidgetState.currentState?.myMethodIWantToCallFromAnotherWidget();
   }
 
   @override
@@ -99,7 +85,7 @@ class _MediaContentState extends State<MediaContent> {
       color: _contentTypeList[i].materialColor,
       child: Stack(
         children: [
-          VideoApp(url: _contentTypeList[i].mediaUrl, key: _myWidgetState),
+          VideoApp(url: _contentTypeList[i].mediaUrl),
           Container(
             alignment: Alignment.bottomCenter,
             color: Colors.transparent,
@@ -159,8 +145,7 @@ class _MediaContentState extends State<MediaContent> {
                           GestureDetector(
                             child: const Icon(Icons.person_pin_circle_sharp),
                             onTap: () {
-                              onSomeEvent();
-                              print('HJISISISI');
+                              print('Tapped to play');
                             },
                           ),
                           const Icon(Icons.person_pin_circle_sharp),
