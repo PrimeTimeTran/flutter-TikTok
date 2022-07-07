@@ -24,7 +24,11 @@ class _VideoAppState extends State<VideoApp> {
       });
     _controller.setLooping(true);
     _controller.setVolume(.8);
-    _controller.play();
+
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _controller.play();
+    });
   }
 
   @override
