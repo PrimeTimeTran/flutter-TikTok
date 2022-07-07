@@ -28,7 +28,7 @@ class _MediaContentState extends State<MediaContent> {
     _controller.setVolume(.8);
 
     Future.delayed(const Duration(milliseconds: 500), () {
-      _controller.play();
+      // _controller.play();
     });
   }
 

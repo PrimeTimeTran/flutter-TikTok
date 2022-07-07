@@ -30,7 +30,8 @@ class _TikTokPageState extends State<TikTokPage> {
             for (var i = 0; i < 30; i++) MediaContent(index: i),
           ],
         ),
-        const Positioned(left: 20, top: 20, child: Text('PrimeTimeTran')),
+        const Positioned(
+            left: 20, top: 20, child: Text('PrimeTimeTran GOGOGO')),
       ],
     );
   }
