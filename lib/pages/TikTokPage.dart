@@ -24,6 +24,7 @@ class _TikTokPageState extends State<TikTokPage> {
     return Stack(
       children: [
         PageView(
+          padEnds: false,
           controller: controller,
           scrollDirection: Axis.vertical,
           children: [
