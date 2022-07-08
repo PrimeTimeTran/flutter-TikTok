@@ -91,7 +91,7 @@ class _DrawerNav extends State<DrawerNav> {
       ),
       bottomNavigationBar: SafeArea(
         bottom: true,
-        // minimum: const EdgeInsets.only(bottom: 10),
+        minimum: const EdgeInsets.only(bottom: 10),
         child: BottomNavigationBar(
           elevation: 0,
           items: bottomTabs(),
