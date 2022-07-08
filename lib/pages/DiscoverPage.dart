@@ -107,9 +107,9 @@ class _DiscoverPage extends State<DiscoverPage> {
             itemCount: entries.length,
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
-              return Container(
+              return SizedBox(
                 height: height / 6,
-                color: Colors.amber[colorCodes[index]],
+                // color: Colors.amber[colorCodes[index]],
                 child: ListView.separated(
                   itemCount: entries.length,
                   scrollDirection: Axis.horizontal,
@@ -121,7 +121,7 @@ class _DiscoverPage extends State<DiscoverPage> {
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(1),
                     child: Divider(),
                   ),
                 ),

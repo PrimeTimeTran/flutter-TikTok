@@ -45,12 +45,12 @@ class CustomTabIcon extends StatelessWidget {
               height: double.infinity,
               width: 38,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(7),
               ),
               child: const Icon(
                 Icons.add,
-                color: Colors.black,
+                color: Colors.white,
                 size: 20,
               ),
             ),
