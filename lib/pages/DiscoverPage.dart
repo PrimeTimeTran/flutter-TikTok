@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
@@ -30,52 +31,88 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPage extends State<DiscoverPage> {
-  final int _count = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                viewportFraction: 1,
-                autoPlayInterval: const Duration(seconds: 3),
-                height: MediaQuery.of(context).size.height / 5,
-              ),
-              items: [1, 2, 3].map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return SizedBox(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(CustomPageRoute(
-                              child: const DiscoverDetailPage()));
-                        },
-                        child: Hero(
-                          tag: 'banner-$i',
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            // margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration:
-                                const BoxDecoration(color: Colors.amber),
-                            child: FittedBox(
-                              fit: BoxFit.fill,
-                              child: Image.asset(
-                                  'assets/images/discover-hero.png'),
-                            ),
+    final List<String> entries = <String>[
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K'
+    ];
+    final List<int> colorCodes = <int>[
+      600,
+      500,
+      100,
+      200,
+      300,
+      400,
+      500,
+      200,
+      300,
+      400,
+      500,
+    ];
+
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          CarouselSlider(
+            options: CarouselOptions(
+              viewportFraction: 1,
+              autoPlayInterval: const Duration(seconds: 3),
+              height: MediaQuery.of(context).size.height / 5,
+            ),
+            items: [1, 2, 3].map((i) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return SizedBox(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                            CustomPageRoute(child: const DiscoverDetailPage()));
+                      },
+                      child: Hero(
+                        tag: 'banner-$i',
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: const BoxDecoration(color: Colors.amber),
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child:
+                                Image.asset('assets/images/discover-hero.png'),
                           ),
                         ),
                       ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
-            Text('You have pressed the button $_count times.')
-          ],
-        ),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
+          ),
+          ListView.separated(
+            primary: false,
+            shrinkWrap: true,
+            itemCount: entries.length,
+            scrollDirection: Axis.vertical,
+            padding: const EdgeInsets.all(8),
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 50,
+                color: Colors.amber[colorCodes[index]],
+                child: Center(child: Text('Entry ${entries[index]}')),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+          ),
+        ],
       ),
     );
   }
