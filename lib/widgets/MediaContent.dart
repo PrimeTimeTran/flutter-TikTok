@@ -25,8 +25,9 @@ class _MediaContentState extends State<MediaContent> {
           ..initialize().then((_) {
             setState(() {});
           });
+
     _controller.setLooping(true);
-    _controller.setVolume(.8);
+    _controller.setVolume(0.5);
 
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
@@ -46,6 +47,7 @@ class _MediaContentState extends State<MediaContent> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     final i = widget.index;
+
     return GestureDetector(
       onTap: () {
         _controller.value.isPlaying ? _controller.pause() : _controller.play();
@@ -57,11 +59,18 @@ class _MediaContentState extends State<MediaContent> {
         child: Stack(
           children: [
             _controller.value.isInitialized
-                ? SizedBox(
-                    height: height,
-                    width: width,
-                    child: VideoPlayer(_controller),
-                  )
+                ? _controller.value.aspectRatio < 1.0
+                    ? SizedBox(
+                        height: height,
+                        width: width,
+                        child: VideoPlayer(_controller),
+                      )
+                    : Align(
+                        child: AspectRatio(
+                          aspectRatio: _controller.value.aspectRatio,
+                          child: VideoPlayer(_controller),
+                        ),
+                      )
                 : Container(),
             Container(
               alignment: Alignment.bottomCenter,

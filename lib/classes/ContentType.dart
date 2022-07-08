@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
+
 final faker = Faker();
 final _random = Random();
 
@@ -9,19 +10,12 @@ int randomNum() => 1 + _random.nextInt(75 - 1);
 String randomImage() => "https://picsum.photos/1000?image=${randomNum()}";
 
 List mediaUrls = [
-  'https://v16-webapp.tiktok.com/1b192d7e30325f7acca691ec58ddaae3/62c6a2ea/video/tos/useast2a/tos-useast2a-pve-0037-aiso/3b8b15ffbdcc400cb9a861a30a58e308/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=2852&bt=1426&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZpP5Mwe2NJuQml7Gb&mime_type=video_mp4&qs=0&rc=Ojg3Ozg5aThkZWQ3Z2hkNUBpMzlyODw6ZmlzZTMzZjgzM0BiMy8wLTM2NTExYjQzNmBgYSNrMWw1cjRnYy9gLS1kL2Nzcw%3D%3D&l=202207070309460102452461010402C51C',
-  'https://v16-webapp.tiktok.com/1b6d953474e3c45572c738b6f03e1c67/62c6a377/video/tos/useast2a/tos-useast2a-pve-0037c001-aiso/1594de88fe7a4735a4f159475113c137/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=2628&bt=1314&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zfe5Mwe2Nbrhml7Gb&mime_type=video_mp4&qs=0&rc=NTc2PDk3N2U7OWhlZmllZ0BpM2x4Ozo6ZmduZDMzZjczM0AzNjI1MzM0XzAxYGMuYzJgYSNwZmBvcjRfNm1gLS1kMWNzcw%3D%3D&l=202207070312090102510041721E02AA85',
-  'https://v16-webapp.tiktok.com/7febed2f1a7a07c8a2f98ca54c2f38e1/62c6a385/video/tos/useast2a/tos-useast2a-pve-0037-aiso/929f7e5e43cc4e608b6d28d3cbae4096/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1434&bt=717&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zfe5Mwe2Nbrhml7Gb&mime_type=video_mp4&qs=0&rc=OTNmOzk4aTMzOWhkOmY0aEBpajxucGU6Zjk2ZDMzZjczM0BiNmBgNjZgNmIxMTE0MDAwYSNsMmxlcjRnNW5gLS1kMWNzcw%3D%3D&l=202207070312090102510041721E02AA85',
-  'https://v16-webapp.tiktok.com/bcc1632c3f060bc046318dc0ad598afa/62c6a382/video/tos/useast2a/tos-useast2a-pve-0037-aiso/224e19c13be04b8c93e5cc1c34df851d/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1178&bt=589&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zfe5Mwe2Nbrhml7Gb&mime_type=video_mp4&qs=0&rc=M2kzOTtnaDk7aDc7OGRnNEBpM2l1d2c6ZmVxPDMzZjczM0BgYzMzMDFiNjExNF9jYy9hYSNyamRncjRnaTZgLS1kMWNzcw%3D%3D&l=202207070312090102510041721E02AA85',
-  'https://v16-webapp.tiktok.com/8ced29c1341052059d29c9dd033b598a/62c6a38a/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8603d8f6f6d14cfb98e8440863cdd641/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1252&bt=626&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZRe5Mwe2Njfgml7Gb&mime_type=video_mp4&qs=0&rc=aTw7NWVlOWg6NGVlOWQ7Z0BpMzRzdmQ6ZndqPDMzZjczM0A0YWAyMC5jXzYxYmExX2MtYSNpM2sycjRfYjZgLS1kMWNzcw%3D%3D&l=202207070312100102510582202702E77A',
-  'https://v16-webapp.tiktok.com/f72a6a871ca1ae49047ca799b46b3b22/62c6a376/video/tos/useast2a/tos-useast2a-pve-0037-aiso/aa2fa8abb0dd4a099b33f9fc07a539ee/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=956&bt=478&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zfe5Mwe2Nbrhml7Gb&mime_type=video_mp4&qs=0&rc=NmhlPGg6NzY3OGc1aGU4ZUBpamY4OGg6ZnBlPDMzZjczM0BiXjIuMDJjNmAxY15hNV5gYSNzNGphcjRvY19gLS1kMWNzcw%3D%3D&l=202207070312090102510041721E02AA85',
-  'https://v16-webapp.tiktok.com/d4e5f3e9e2476d115ac81fe6272f632d/62c6a3af/video/tos/useast2a/tos-useast2a-pve-0037-aiso/1a8d090b2ae6498688aeb69b9dbf48f9/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=1170&bt=585&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZRe5Mwe2Njfgml7Gb&mime_type=video_mp4&qs=0&rc=aDQzZTw4ODgzNDxoZjw5N0Bpajc6ajc6ZnB2OzMzZjczM0BiNS02YDJhNWIxMF40LzBfYSMtYmFmcjRnMGhgLS1kMWNzcw%3D%3D&l=202207070312100102510582202702E77A',
-  // 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-  // 'https://v16-webapp.tiktok.com/fb3db6c80a8d3c4c24126ff7bbd07638/62c495c6/video/tos/useast2a/tos-useast2a-pve-0037-aiso/224e19c13be04b8c93e5cc1c34df851d/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1178&bt=589&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Z-.dMwe2NyfQml7Gb&mime_type=video_mp4&qs=0&rc=M2kzOTtnaDk7aDc7OGRnNEBpM2l1d2c6ZmVxPDMzZjczM0BgYzMzMDFiNjExNF9jYy9hYSNyamRncjRnaTZgLS1kMWNzcw%3D%3D&l=202207051349000102450151462334E1B4',
-  // 'https://v16-webapp.tiktok.com/4921b0284009fcd311e43b72b27146dc/62c495f2/video/tos/useast2a/tos-useast2a-pve-0037-aiso/8603d8f6f6d14cfb98e8440863cdd641/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1252&bt=626&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZK.dMwe2NI~Hrl7Gb&mime_type=video_mp4&qs=0&rc=aTw7NWVlOWg6NGVlOWQ7Z0BpMzRzdmQ6ZndqPDMzZjczM0A0YWAyMC5jXzYxYmExX2MtYSNpM2sycjRfYjZgLS1kMWNzcw%3D%3D&l=202207051349380102451331141034AA2D',
-  // 'https://v16-webapp.tiktok.com/52a6e204e0a415919e17bcb7a76e4c9b/62c495ba/video/tos/useast2a/tos-useast2a-pve-0037-aiso/aa2fa8abb0dd4a099b33f9fc07a539ee/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=956&bt=478&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Z-.dMwe2NyfQml7Gb&mime_type=video_mp4&qs=0&rc=NmhlPGg6NzY3OGc1aGU4ZUBpamY4OGg6ZnBlPDMzZjczM0BiXjIuMDJjNmAxY15hNV5gYSNzNGphcjRvY19gLS1kMWNzcw%3D%3D&l=202207051349000102450151462334E1B4',
-  // 'https://v16-webapp.tiktok.com/f75a6841f746013545fd896b53a98665/62c499fc/video/tos/useast2a/tos-useast2a-pve-0037c001-aiso/47811f245d5542abace08f2ccfb42e18/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=2396&bt=1198&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8ZoGdMwe2NI~Hrl7Gb&mime_type=video_mp4&qs=0&rc=OmU6OTplNjdpM2Q4Zjo8M0BpM3Zsdjc6ZjZzPDMzZjgzM0AtNWM0Y2IxXjIxMDQ2YGFeYSM1NGlrcjQwNWNgLS1kL2Nzcw%3D%3D&l=2022070514071001024500411423364EB2',
-  // 'https://v16-webapp.tiktok.com/b7897aefb926bef0235d5ad6301950ec/62c49a2d/video/tos/useast2a/tos-useast2a-pve-0037-aiso/bc28458ceeef4c349af6a22935808a9a/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=5062&bt=2531&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Z0GdMwe2NBBhml7Gb&mime_type=video_mp4&qs=0&rc=Zzc0Nzg2ODk0aGdnZjNkZkBpanQ6ajQ6ZjVwOzMzZjgzM0A0YjZfNjYzNmAxY2M2NDRfYSNoNV9fcjRvYTZgLS1kL2Nzcw%3D%3D&l=202207051407530102451292070E38C126',
+
+  // 9:16
+  'https://v16-webapp.tiktok.com/7c4bf9616dc56000ba42f71fe0f62a79/62c853b1/video/tos/useast2a/tos-useast2a-pve-0037-aiso/929f7e5e43cc4e608b6d28d3cbae4096/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C0%7C0&br=1434&bt=717&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zge~Mwe2NQVQml7Gb&mime_type=video_mp4&qs=0&rc=OTNmOzk4aTMzOWhkOmY0aEBpajxucGU6Zjk2ZDMzZjczM0BiNmBgNjZgNmIxMTE0MDAwYSNsMmxlcjRnNW5gLS1kMWNzcw%3D%3D&l=202207080956050102450151460325A4DD',
+
+  // 16:9
+  'https://v16-webapp.tiktok.com/58d012494a0f90b03524a5ab6dc199d7/62c853e1/video/tos/alisg/tos-alisg-pve-0037/968278b87abc46d18ee7863c9b512a07/?a=1988&ch=0&cr=0&dr=0&lr=tiktok_m&cd=0%7C0%7C1%7C0&cv=1&br=602&bt=301&btag=80000&cs=0&ds=3&ft=eXd.6Hk_Myq8Zge~Mwe2NQVQml7Gb&mime_type=video_mp4&qs=0&rc=aTc2ZGVlZ2ZnNzo3PGgzNUBpMzQ4OGQ6ZnNoPDMzODgzNEBiXl9hY19fXjUxNjAuNTA2YSMtb2pscjRnaGJgLS1kLy1zcw%3D%3D&l=202207080956050102450151460325A4DD'
 ];
 
 List colors = [
@@ -69,6 +63,9 @@ class ContentType {
       this.soundTitle = '',
       this.mediaUrl = '',
       this.materialColor = Colors.red});
+
+
+  
 
   List<ContentType> createSampleList() {
     List<ContentType> contentType = <ContentType>[];
