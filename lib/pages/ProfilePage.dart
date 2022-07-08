@@ -16,7 +16,6 @@ class _ProfilePage extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: const Text('Loi Tran'),
         leading: IconButton(
@@ -67,11 +66,11 @@ class _ProfilePage extends State<ProfilePage> {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.menu)
           ),
         ],
       ),
-      body: ListView(
+      body: ListView(      
         children: [
           Column(
             children: [

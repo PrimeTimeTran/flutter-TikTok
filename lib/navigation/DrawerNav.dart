@@ -82,7 +82,6 @@ class _DrawerNav extends State<DrawerNav> {
       appBar: ![0, 2, 4].contains(currentIdx)
           ? AppBar(
               title: currentIdx != 2 ? title(currentIdx) : null,
-              backgroundColor: Colors.transparent,
             )
           : null,
       body: IndexedStack(
@@ -97,6 +96,7 @@ class _DrawerNav extends State<DrawerNav> {
           items: bottomTabs(),
           currentIndex: currentIdx,
           unselectedItemColor: Colors.black45,
+          // unselectedItemColor: Theme.of(context).colorScheme.primar,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.black,
           onTap: (idx) => setState(() => currentIdx = idx),

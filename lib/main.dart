@@ -34,9 +34,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light(),
-      debugShowCheckedModeBanner: false,
       home: const DrawerNav(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white,
+        iconTheme: const IconThemeData(
+          size: 28,
+          color: Colors.black54,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          titleTextStyle: TextStyle(color: Colors.black87),
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(
+            size: 20,
+            color: Colors.black87,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -108,8 +108,7 @@ class _DiscoverPage extends State<DiscoverPage> {
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
               return SizedBox(
-                height: height / 6,
-                // color: Colors.amber[colorCodes[index]],
+                height: height / 5,
                 child: ListView.separated(
                   itemCount: entries.length,
                   scrollDirection: Axis.horizontal,
