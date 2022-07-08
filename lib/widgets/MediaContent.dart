@@ -55,7 +55,6 @@ class _MediaContentState extends State<MediaContent> {
       child: Container(
         width: width,
         height: height,
-        // padding: const EdgeInsets.all(0),
         color: _contentTypeList[i].materialColor,
         child: Stack(
           children: [

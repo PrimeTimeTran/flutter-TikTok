@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/widgets/MediaContent.dart';
+
 class TikTokPage extends StatefulWidget {
   const TikTokPage({Key? key}) : super(key: key);
 
@@ -11,7 +12,6 @@ class TikTokPage extends StatefulWidget {
 }
 
 class _TikTokPageState extends State<TikTokPage> {
-
   @override
   void initState() {
     super.initState();
@@ -21,18 +21,20 @@ class _TikTokPageState extends State<TikTokPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        PageView(
-          controller: controller,
-          scrollDirection: Axis.vertical,
-          children: [
-            for (var i = 0; i < 30; i++) MediaContent(index: i),
-          ],
-        ),
-        const Positioned(
-            left: 20, top: 20, child: Text('PrimeTimeTran Test1')),
-      ],
+    return Center(
+      child: Stack(
+        children: [
+          PageView(
+            controller: controller,
+            scrollDirection: Axis.vertical,
+            children: [
+              for (var i = 0; i < 30; i++) MediaContent(index: i),
+            ],
+          ),
+          const Positioned(
+              left: 20, top: 20, child: Text('PrimeTimeTran Test2')),
+        ],
+      ),
     );
   }
 }
