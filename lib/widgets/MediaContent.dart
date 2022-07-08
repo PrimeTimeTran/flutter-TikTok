@@ -27,7 +27,8 @@ class _MediaContentState extends State<MediaContent> {
           });
 
     _controller.setLooping(true);
-    _controller.setVolume(0.5);
+    // _controller.setVolume(0.5);
+    _controller.setVolume(1);
 
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
@@ -40,6 +41,13 @@ class _MediaContentState extends State<MediaContent> {
         _controller.play();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _controller.pause();
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
