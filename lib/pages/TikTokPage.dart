@@ -31,7 +31,7 @@ class _TikTokPageState extends State<TikTokPage> {
           ],
         ),
         const Positioned(
-            left: 20, top: 20, child: Text('PrimeTimeTran GOGOGO')),
+            left: 20, top: 20, child: Text('PrimeTimeTran Test1')),
       ],
     );
   }
