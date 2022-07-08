@@ -4,6 +4,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
 
+import '../classes/ContentType.dart';
+
 class CustomPageRoute extends PageRouteBuilder {
   final Widget child;
 
@@ -33,6 +35,9 @@ class DiscoverPage extends StatefulWidget {
 class _DiscoverPage extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     final List<String> entries = <String>[
       'A',
       'B',
@@ -100,17 +105,45 @@ class _DiscoverPage extends State<DiscoverPage> {
             primary: false,
             shrinkWrap: true,
             itemCount: entries.length,
-            scrollDirection: Axis.vertical,
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 50,
+                height: height / 6,
                 color: Colors.amber[colorCodes[index]],
-                child: Center(child: Text('Entry ${entries[index]}')),
+                child: ListView.separated(
+                  itemCount: entries.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    final go = randomImage();
+                    return Image(
+                      image: NetworkImage(go),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Divider(),
+                  ),
+                ),
               );
             },
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(),
+            separatorBuilder: (BuildContext context, int index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: const [
+                      Text('Alpha'),
+                      Text('Alpha'),
+                    ],
+                  ),
+                  Column(
+                    children: const [Text('Bravo')],
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
