@@ -24,6 +24,9 @@ class _MediaContentState extends State<MediaContent> {
   void initState() {
     super.initState();
 
+    print('Loi');
+    print(widget.id);
+
     _controller = VideoPlayerController.network(getContent(widget.id).mediaUrl)
       ..initialize().then((_) {
         setState(() {});

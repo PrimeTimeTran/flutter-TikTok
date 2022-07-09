@@ -53,28 +53,15 @@ class _DiscoverPage extends State<DiscoverPage> {
       'J',
       'K'
     ];
-    final List<int> colorCodes = <int>[
-      600,
-      500,
-      100,
-      200,
-      300,
-      400,
-      500,
-      200,
-      300,
-      400,
-      500,
-    ];
 
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           CarouselSlider(
             options: CarouselOptions(
+              height: height / 5,
               viewportFraction: 1,
               autoPlayInterval: const Duration(seconds: 3),
-              height: MediaQuery.of(context).size.height / 5,
             ),
             items: [1, 2, 3].map((i) {
               return Builder(
@@ -88,7 +75,7 @@ class _DiscoverPage extends State<DiscoverPage> {
                       child: Hero(
                         tag: 'banner-$i',
                         child: Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: width,
                           decoration: const BoxDecoration(color: Colors.amber),
                           child: FittedBox(
                             fit: BoxFit.fill,
