@@ -7,7 +7,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:worldlingo3/api/sheets/user_sheets_api.dart';
 import 'package:worldlingo3/api/sheets/phrase_sheets_api.dart';
 
-import 'navigation/DrawerNav.dart';
+import 'package:worldlingo3/navigation/DrawerNav.dart';
 
 import 'package:worldlingo3/widgets/MediaContent.dart';
 

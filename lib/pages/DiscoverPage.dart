@@ -43,14 +43,6 @@ class _DiscoverPage extends State<DiscoverPage> {
       'A',
       'B',
       'C',
-      'D',
-      'E',
-      'F',
-      'G',
-      'H',
-      'I',
-      'J',
-      'K',
     ];
 
     return SingleChildScrollView(

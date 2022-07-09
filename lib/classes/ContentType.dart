@@ -77,7 +77,7 @@ class ContentType {
 
   List<ContentType> createSampleList() {
     List<ContentType> contentType = <ContentType>[];
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 5; i++) {
       var uuid = const Uuid();
 
       contentType.add(
