@@ -94,13 +94,14 @@ class _DiscoverPage extends State<DiscoverPage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
                     return GestureDetector(
-                        child: MediaContentPreview(id: mediaList[i].id),
+                        behavior: HitTestBehavior.translucent,
                         onTap: () {
                           print('Hi');
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: ((ctx) =>
                                   MediaContent(id: mediaList[i].id))));
-                        });
+                        },
+                        child: MediaContentPreview(id: mediaList[i].id));
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(
