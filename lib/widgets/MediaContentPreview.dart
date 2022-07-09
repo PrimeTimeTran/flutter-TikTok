@@ -31,9 +31,6 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
   Widget build(BuildContext context) {
     final id = widget.id;
 
-    print('MediaContentPreview');
-    print(widget.id);
-
     return _controller.value.isInitialized
         ? SizedBox(
               width: 125,
