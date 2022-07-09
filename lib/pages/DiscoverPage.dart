@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
-
-import '../classes/ContentType.dart';
+import 'package:worldlingo3/widgets/MediaContentPreview.dart';
 
 class CustomPageRoute extends PageRouteBuilder {
   final Widget child;
@@ -33,6 +31,7 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPage extends State<DiscoverPage> {
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -112,11 +111,8 @@ class _DiscoverPage extends State<DiscoverPage> {
                 child: ListView.separated(
                   itemCount: entries.length,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    final go = randomImage();
-                    return Image(
-                      image: NetworkImage(go),
-                    );
+                  itemBuilder: (BuildContext context, int i) {
+                    return MediaContentPreview(index: i);
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(

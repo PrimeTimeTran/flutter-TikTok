@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:uuid/uuid.dart';
+
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
@@ -19,7 +21,9 @@ List mediaUrls = [
   // 16:9
   'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
   'https://assets.mixkit.co/videos/preview/mixkit-sunset-over-the-coast-of-florida-24550-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-florida-state-flag-18081-large.mp4'
+  'https://assets.mixkit.co/videos/preview/mixkit-florida-state-flag-18081-large.mp4',
+  'https://assets.mixkit.co/videos/preview/mixkit-going-down-a-curved-highway-down-a-mountain-41576-large.mp4',
+  'https://assets.mixkit.co/videos/preview/mixkit-white-sand-beach-and-palm-trees-1564-large.mp4',
 ];
 
 List colors = [
@@ -38,6 +42,7 @@ List colors = [
 ];
 
 class ContentType {
+  String id;
   String title;
   String creatorName;
   String creatorAvatarUrl;
@@ -54,6 +59,7 @@ class ContentType {
 
   ContentType(
       {Key? key,
+      this.id = '',
       this.image = '',
       this.creatorAvatarUrl = '',
       this.title = '',
@@ -71,8 +77,11 @@ class ContentType {
   List<ContentType> createSampleList() {
     List<ContentType> contentType = <ContentType>[];
     for (var i = 0; i < 30; i++) {
+      var uuid = const Uuid();
+
       contentType.add(
         ContentType(
+            id: uuid.v1(),
             creatorName: faker.person.name(),
             caption: faker.lorem.sentences(1).join(),
             soundTitle: faker.lorem.words(3).join(' '),

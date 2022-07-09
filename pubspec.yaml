@@ -44,6 +44,8 @@ dependencies:
   firebase_core: ^1.19.1
   firebase_analytics: ^9.1.12
   sticky_headers: ^0.3.0
+  video_thumbnail: ^0.5.0
+  uuid: ^3.0.6
 
 
 flutter_icons:

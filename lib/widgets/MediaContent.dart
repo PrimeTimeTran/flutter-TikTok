@@ -5,7 +5,7 @@ import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
 
 class MediaContent extends StatefulWidget {
-  const MediaContent({Key? key, required this.index}) : super(key: key);
+  const MediaContent({Key? key, this.index = 0}) : super(key: key);
   final int index;
 
   @override
@@ -55,6 +55,8 @@ class _MediaContentState extends State<MediaContent> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     final i = widget.index;
+
+    print('After $i');
 
     return GestureDetector(
       onTap: () {
