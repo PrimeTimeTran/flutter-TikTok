@@ -35,22 +35,10 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
     print(widget.id);
 
     return _controller.value.isInitialized
-        ? GestureDetector(
-            onTap: () {
-              print(id);
-              Navigator.pushNamed(
-                context,
-                '/media-content',
-                arguments: <String, String>{
-                  'id': id,
-                },
-              );
-            },
-            child: SizedBox(
+        ? SizedBox(
               width: 125,
               height: 150,
-              child: VideoPlayer(_controller),
-            ),
+            child: VideoPlayer(_controller),
           )
         : const SizedBox(
             width: 125,

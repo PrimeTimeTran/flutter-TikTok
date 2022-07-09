@@ -33,6 +33,7 @@ class _MediaContentState extends State<MediaContent> {
       });
 
     _controller.setLooping(true);
+    // _controller.setVolume(0.0);
     // _controller.setVolume(0.5);
     _controller.setVolume(1);
 

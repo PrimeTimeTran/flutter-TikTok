@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
 import 'package:worldlingo3/widgets/MediaContentPreview.dart';
+import 'package:worldlingo3/widgets/MediaContent.dart';
 
 import 'package:worldlingo3/classes/ContentType.dart';
 
@@ -34,7 +34,6 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPage extends State<DiscoverPage> {
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -51,7 +50,7 @@ class _DiscoverPage extends State<DiscoverPage> {
       'H',
       'I',
       'J',
-      'K'
+      'K',
     ];
 
     return SingleChildScrollView(
@@ -102,7 +101,14 @@ class _DiscoverPage extends State<DiscoverPage> {
                   itemCount: mediaList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
-                    return MediaContentPreview(id: mediaList[i].id);
+                    return GestureDetector(
+                        child: MediaContentPreview(id: mediaList[i].id),
+                        onTap: () {
+                          print('Hi');
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((ctx) =>
+                                  MediaContent(id: mediaList[i].id))));
+                        });
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(
