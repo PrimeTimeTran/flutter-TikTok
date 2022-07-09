@@ -5,7 +5,9 @@ import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
 
 class MediaContent extends StatefulWidget {
-  const MediaContent({Key? key, this.index = 0}) : super(key: key);
+  const MediaContent({Key? key, this.index = 0, this.id = '0'})
+      : super(key: key);
+  final String id;
   final int index;
 
   @override
@@ -13,18 +15,19 @@ class MediaContent extends StatefulWidget {
 }
 
 class _MediaContentState extends State<MediaContent> {
-  late List _contentTypeList = <ContentType>[];
   late VideoPlayerController _controller;
+
+  ContentType getContent(String id) =>
+      mediaList.firstWhere((content) => content.id == id);
 
   @override
   void initState() {
     super.initState();
-    _contentTypeList = ContentType().createSampleList();
-    _controller =
-        VideoPlayerController.network(_contentTypeList[widget.index].mediaUrl)
-          ..initialize().then((_) {
-            setState(() {});
-          });
+
+    _controller = VideoPlayerController.network(getContent(widget.id).mediaUrl)
+      ..initialize().then((_) {
+        setState(() {});
+      });
 
     _controller.setLooping(true);
     // _controller.setVolume(0.5);
@@ -50,13 +53,15 @@ class _MediaContentState extends State<MediaContent> {
     super.dispose();
   }
 
+  ContentType findContent(String id) =>
+      mediaList.firstWhere((content) => content.id == id);
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final i = widget.index;
-
-    print('After $i');
+    final id = widget.id;
+    final content = findContent(id);
 
     return GestureDetector(
       onTap: () {
@@ -65,7 +70,7 @@ class _MediaContentState extends State<MediaContent> {
       child: Container(
         width: width,
         height: height,
-        color: _contentTypeList[i].materialColor,
+        color: content.materialColor,
         child: Stack(
           children: [
             _controller.value.isInitialized
@@ -101,14 +106,14 @@ class _MediaContentState extends State<MediaContent> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            _contentTypeList[i].creatorName,
+                            content.creatorName,
                             style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
                                 decoration: TextDecoration.none),
                           ),
                           Text(
-                            _contentTypeList[i].caption,
+                            content.caption,
                             style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.grey,
@@ -118,7 +123,7 @@ class _MediaContentState extends State<MediaContent> {
                             children: [
                               const Icon(Icons.my_library_music),
                               Text(
-                                _contentTypeList[i].soundTitle,
+                                content.soundTitle,
                                 style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.grey,
@@ -145,7 +150,7 @@ class _MediaContentState extends State<MediaContent> {
                               children: [
                                 const Icon(Icons.heart_broken),
                                 Text(
-                                  _contentTypeList[i].countLikes.toString(),
+                                  content.countLikes.toString(),
                                   style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
@@ -158,7 +163,7 @@ class _MediaContentState extends State<MediaContent> {
                               children: [
                                 const Icon(Icons.message),
                                 Text(
-                                  _contentTypeList[i].countComments.toString(),
+                                  content.countComments.toString(),
                                   style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
@@ -171,7 +176,7 @@ class _MediaContentState extends State<MediaContent> {
                               children: [
                                 const Icon(Icons.bookmark_outlined),
                                 Text(
-                                  _contentTypeList[i].countBookmarks.toString(),
+                                  content.countBookmarks.toString(),
                                   style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,
@@ -184,7 +189,7 @@ class _MediaContentState extends State<MediaContent> {
                               children: [
                                 const Icon(Icons.share_sharp),
                                 Text(
-                                  _contentTypeList[i].countShares.toString(),
+                                  findContent(id).countShares.toString(),
                                   style: const TextStyle(
                                     fontSize: 15,
                                     color: Colors.white,

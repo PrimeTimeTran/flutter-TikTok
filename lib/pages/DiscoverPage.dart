@@ -1,8 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
 import 'package:worldlingo3/widgets/MediaContentPreview.dart';
+
+import 'package:worldlingo3/classes/ContentType.dart';
 
 class CustomPageRoute extends PageRouteBuilder {
   final Widget child;
@@ -109,10 +112,10 @@ class _DiscoverPage extends State<DiscoverPage> {
               return SizedBox(
                 height: height / 5,
                 child: ListView.separated(
-                  itemCount: entries.length,
+                  itemCount: mediaList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
-                    return MediaContentPreview(index: i);
+                    return MediaContentPreview(id: mediaList[i].id);
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(

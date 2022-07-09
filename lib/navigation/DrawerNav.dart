@@ -66,7 +66,7 @@ bottomTabs() {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 0;
+  int currentIdx = 1;
 
   final screens = [
     const TikTokPage(),
@@ -96,7 +96,6 @@ class _DrawerNav extends State<DrawerNav> {
           items: bottomTabs(),
           currentIndex: currentIdx,
           unselectedItemColor: Colors.black45,
-          // unselectedItemColor: Theme.of(context).colorScheme.primar,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.black,
           onTap: (idx) => setState(() => currentIdx = idx),

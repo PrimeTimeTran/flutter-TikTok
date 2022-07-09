@@ -12,18 +12,10 @@ String randomImage() => "https://picsum.photos/1000?image=${randomNum()}";
 
 List mediaUrls = [
   // 9:16
-  'https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-womans-feet-splashing-in-the-pool-1261-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-silhouette-of-urban-dancer-in-smoke-33898-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4',
   'https://assets.mixkit.co/videos/preview/mixkit-man-runs-past-ground-level-shot-32809-large.mp4',
 
   // 16:9
   'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-sunset-over-the-coast-of-florida-24550-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-florida-state-flag-18081-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-going-down-a-curved-highway-down-a-mountain-41576-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-white-sand-beach-and-palm-trees-1564-large.mp4',
 ];
 
 List colors = [
@@ -97,3 +89,5 @@ class ContentType {
     return contentType;
   }
 }
+
+final mediaList = ContentType().createSampleList();

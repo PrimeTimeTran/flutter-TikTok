@@ -5,41 +5,41 @@ import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
 
 class MediaContentPreview extends StatefulWidget {
-  const MediaContentPreview({Key? key, required this.index}) : super(key: key);
-  final int index;
+  const MediaContentPreview({Key? key, this.id = '0'}) : super(key: key);
+  final String id;
 
   @override
   State<MediaContentPreview> createState() => _MediaContentPreviewState();
 }
 
 class _MediaContentPreviewState extends State<MediaContentPreview> {
-  late List _contentTypeList = <ContentType>[];
   late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _contentTypeList = ContentType().createSampleList();
-    _controller =
-        VideoPlayerController.network(_contentTypeList[widget.index].mediaUrl)
-          ..initialize().then((_) {
-            setState(() {}); //when your thumbnail will show.
-          });
+    ContentType findContent(String id) =>
+        mediaList.firstWhere((content) => content.id == id);
+
+    _controller = VideoPlayerController.network(findContent(widget.id).mediaUrl)
+      ..initialize().then((_) {
+        setState(() {}); //when your thumbnail will show.
+      });
   }
 
   @override
   Widget build(BuildContext context) {
-    final i = widget.index;
+    final id = widget.id;
 
     return _controller.value.isInitialized
         ? GestureDetector(
             onTap: () {
-              print('Before $i');
+              print(id);
               Navigator.pushNamed(
                 context,
                 '/media-content',
-                arguments: <String, int>{
-                  'index': i,
+                arguments: <String, String>{
+                  'id': id,
                 },
               );
             },
@@ -49,7 +49,6 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
               child: VideoPlayer(_controller),
             ),
           )
-        // : const CircularProgressIndicator();
         : const SizedBox(
             width: 125,
             height: 150.0,
