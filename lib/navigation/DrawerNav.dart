@@ -123,31 +123,21 @@ class _DrawerNav extends State<DrawerNav> {
             ListTile(
               title: const Text('🇻🇳 Vietnam'),
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   // MaterialPageRoute(builder: (context) => const FooPage()),
-                // );
               },
             ),
             ListTile(
               title: const Text('🇬🇧  United Kingdom'),
               onTap: () {
-                // Update the state of the app.
-                // ...
               },
             ),
             ListTile(
               title: const Text('🇫🇷 France'),
               onTap: () {
-                // Update the state of the app.
-                // ...
               },
             ),
             ListTile(
               title: const Text('🇷🇺 Russia'),
               onTap: () {
-                // Update the state of the app.
-                // ...
               },
             ),
           ],
