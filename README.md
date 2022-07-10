@@ -4,12 +4,13 @@ A few projects to understand Flutter.
 
 ![demo](./demo.gif)
 
-- Layouts(Drawer & Tab)
-- Instantiate class with Color class as input parameter.
-- Drawer navigator
-- Drawer items
-- Navigator pop with context
-- Bottom tab navigator
+- Navigation(Drawer, Tab, Stack)
+- Video Player
+- PageView
+- Layout(Row, Column, Expanded)
+- SafeArea
+- HeroImage
+
 - Custom launcher icon
 - Custom splash screen background
 - Google sheets API call

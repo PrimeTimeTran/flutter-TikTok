@@ -23,13 +23,12 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
 
     _controller = VideoPlayerController.network(findContent(widget.id).mediaUrl)
       ..initialize().then((_) {
-        setState(() {}); //when your thumbnail will show.
+        setState(() {});
       });
   }
 
   @override
   Widget build(BuildContext context) {
-    final id = widget.id;
 
     return _controller.value.isInitialized
         ? SizedBox(

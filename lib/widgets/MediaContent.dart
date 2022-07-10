@@ -24,6 +24,8 @@ class _MediaContentState extends State<MediaContent> {
   void initState() {
     super.initState();
 
+    debugPrint('MediaContent Init');
+    debugPrint(widget.id);
     _controller = VideoPlayerController.network(getContent(widget.id).mediaUrl)
       ..initialize().then((_) {
         setState(() {});
@@ -63,6 +65,9 @@ class _MediaContentState extends State<MediaContent> {
     final height = MediaQuery.of(context).size.height;
     final id = widget.id;
     final content = findContent(id);
+
+    debugPrint('MediaContent');
+    debugPrint(id);
 
     return GestureDetector(
       onTap: () {

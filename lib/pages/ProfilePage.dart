@@ -30,42 +30,42 @@ class _ProfilePage extends State<ProfilePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.remove_red_eye_outlined),
-            onPressed: () {
-              showAdaptiveActionSheet(
-                context: context,
-                actions: <BottomSheetAction>[
-                  BottomSheetAction(
-                    title: const Text(
-                      'Creator Tools',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onPressed: () {},
-                    leading:
-                        const Icon(Icons.phonelink_setup_outlined, size: 25),
-                  ),
-                  BottomSheetAction(
-                    title: const Text(
-                      'Settings & Privacy',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onPressed: () {},
-                    leading: const Icon(
-                      Icons.settings,
-                      size: 25,
-                    ),
-                  ),
-                ],
-              );
-            },
+            onPressed: () {},
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+                showAdaptiveActionSheet(
+                  context: context,
+                  actions: <BottomSheetAction>[
+                    BottomSheetAction(
+                      title: const Text(
+                        'Creator Tools',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onPressed: () {},
+                      leading:
+                          const Icon(Icons.phonelink_setup_outlined, size: 25),
+                    ),
+                    BottomSheetAction(
+                      title: const Text(
+                        'Settings & Privacy',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onPressed: () {},
+                      leading: const Icon(
+                        Icons.settings,
+                        size: 25,
+                      ),
+                    ),
+                  ],
+                );
+              },
               icon: const Icon(Icons.menu)
           ),
         ],
@@ -130,22 +130,56 @@ class _ProfilePage extends State<ProfilePage> {
                             ),
                           ],
                         ),
-                        Column(
-                          children: const [
-                            Text(
-                              "249",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Align(
+                                child: Text('PrimeTimeTran'),
+                              ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    child: const Text(
+                                      "primetimetran received a total of 251 likes across all videos",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        TextButton(
+                                            child: const Text('Ok'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            }),
+                                      ])
+                                ],
                               ),
                             ),
-                            Text(
-                              "Likes",
-                              style: TextStyle(
-                                color: Colors.black54,
+                          ),
+                          child: Column(
+                            children: const [
+                              Text(
+                                "249",
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "Likes",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

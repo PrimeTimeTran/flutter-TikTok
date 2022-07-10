@@ -1,30 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-
-import 'package:worldlingo3/pages/DiscoverDetailPage.dart';
-import 'package:worldlingo3/widgets/MediaContentPreview.dart';
-import 'package:worldlingo3/widgets/MediaContent.dart';
+import 'dart:math';
 
 import 'package:worldlingo3/classes/ContentType.dart';
 
-class CustomPageRoute extends PageRouteBuilder {
-  final Widget child;
+import 'package:worldlingo3/widgets/MediaContentPreview.dart';
+import 'package:worldlingo3/widgets/MediaContent.dart';
+import 'package:worldlingo3/widgets/Carousel.dart';
 
-  CustomPageRoute({
-    required this.child,
-  }) : super(
-            transitionDuration: const Duration(seconds: 1),
-            reverseTransitionDuration: const Duration(seconds: 1),
-            pageBuilder: (context, animation, secondaryAnimation) => child);
-
-  @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-          Animation<double> secondaryAnimation, Widget child) =>
-      SlideTransition(
-          position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
-              .animate(animation),
-          child: child);
-}
+final _random = Random();
 
 class DiscoverPage extends StatefulWidget {
   const DiscoverPage({Key? key}) : super(key: key);
@@ -36,51 +19,20 @@ class DiscoverPage extends StatefulWidget {
 class _DiscoverPage extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
     final List<String> entries = <String>[
-      'A',
-      'B',
-      'C',
+      'Alpha',
+      'Bravo',
+      'Charlie',
+      'Echo',
+      'Delta',
     ];
 
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          CarouselSlider(
-            options: CarouselOptions(
-              height: height / 5,
-              viewportFraction: 1,
-              autoPlayInterval: const Duration(seconds: 3),
-            ),
-            items: [1, 2, 3].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return SizedBox(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(
-                            CustomPageRoute(child: const DiscoverDetailPage()));
-                      },
-                      child: Hero(
-                        tag: 'banner-$i',
-                        child: Container(
-                          width: width,
-                          decoration: const BoxDecoration(color: Colors.amber),
-                          child: FittedBox(
-                            fit: BoxFit.fill,
-                            child:
-                                Image.asset('assets/images/discover-hero.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
+          const Carousel(),
           ListView.separated(
             primary: false,
             shrinkWrap: true,
@@ -90,17 +42,21 @@ class _DiscoverPage extends State<DiscoverPage> {
               return SizedBox(
                 height: height / 5,
                 child: ListView.separated(
-                  itemCount: mediaList.length,
+                  itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
+                    final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
                         onTap: () {
-                          debugPrint('Hi');
-                          Navigator.of(context).push(MaterialPageRoute(
+                          debugPrint('Discover Tap');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
                               builder: ((ctx) =>
-                                  MediaContent(id: mediaList[i].id))));
+                                  MediaContent(id: el.id)),
+                            ),
+                          );
                         },
-                        child: MediaContentPreview(id: mediaList[i].id));
+                        child: MediaContentPreview(id: el.id));
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const Padding(
