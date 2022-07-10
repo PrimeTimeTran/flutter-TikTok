@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:faker/faker.dart';
+
+final faker = Faker();
 class InboxPage extends StatefulWidget {
   const InboxPage({Key? key}) : super(key: key);
 
@@ -21,16 +24,28 @@ class _InboxPage extends State<InboxPage> {
               itemBuilder: (ctx, i) {
                 return Padding(
                   padding: const EdgeInsets.all(5),
-                  child: CircleAvatar(
-                    radius: 30,
-                    backgroundImage:
-                        NetworkImage('https://picsum.photos/250?image=$i'),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage:
+                            NetworkImage('https://picsum.photos/250?image=$i'),
+                      ),
+                      Text(
+                        faker.person.firstName(),
+                        style: const TextStyle(
+                            color: Colors.black87, fontSize: 10),
+                      ),
+                    ],
                   ),
                 );
               },
             ),
           ),
-          Row(children: const [Text('Messages')]),
+          Padding(
+            padding: const EdgeInsets.all(5),
+            child: Row(children: const [Text('Messages')]),
+          ),
           ListView.separated(
             shrinkWrap: true,
             itemCount: 20,
@@ -54,9 +69,18 @@ class _InboxPage extends State<InboxPage> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Column(
-                          children: const [
-                            Text('Hslslslsl'),
-                            Text('Hslslslsl')
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              faker.person.name(),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              faker.lorem.sentences(1).join(),
+                              style: const TextStyle(color: Colors.black87),
+                            ),
                           ],
                         ),
                       ),
