@@ -94,9 +94,8 @@ class _DiscoverPage extends State<DiscoverPage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
                     return GestureDetector(
-                        behavior: HitTestBehavior.translucent,
                         onTap: () {
-                          print('Hi');
+                          debugPrint('Hi');
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: ((ctx) =>
                                   MediaContent(id: mediaList[i].id))));
