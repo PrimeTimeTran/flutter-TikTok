@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
 class DiscoverDetailPage extends StatefulWidget {
-  const DiscoverDetailPage({Key? key}) : super(key: key);
+  const DiscoverDetailPage({Key? key, this.i = 1}) : super(key: key);
+  final int i;
 
   @override
   State<DiscoverDetailPage> createState() => _DiscoverDetailPage();
@@ -11,18 +12,20 @@ class DiscoverDetailPage extends StatefulWidget {
 class _DiscoverDetailPage extends State<DiscoverDetailPage> {
   final int _count = 0;
 
+
   @override
   Widget build(BuildContext context) {
+    final i = widget.i;
+    debugPrint('Detail Discover-0$i.png');
     final fakerFa = Faker();
-
     return Scaffold(
       body: Center(
         child: Container(
           child: Column(
             children: [
               Hero(
-                tag: 'banner-1',
-                child: Image.asset('assets/images/discover-hero.png'),
+                tag: 'Discover-0$i.png',
+                child: Image.asset('assets/images/Discover-0$i.png'),
               ),
               Container(
                 padding: const EdgeInsets.all(20),
