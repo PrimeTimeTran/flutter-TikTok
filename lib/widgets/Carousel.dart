@@ -23,7 +23,6 @@ class _CarouselState extends State<Carousel> {
         autoPlayInterval: const Duration(seconds: 3),
       ),
       items: [1, 2, 3].map((i) {
-        debugPrint('Discover-0$i.png');
         return Builder(
           builder: (BuildContext context) {
             return SizedBox(

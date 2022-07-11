@@ -48,11 +48,11 @@ class _DiscoverPage extends State<DiscoverPage> {
                     final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
                         onTap: () {
-                          debugPrint('Discover Tap');
+                          debugPrint('onTap');
+                          debugPrint(el.id);
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: ((ctx) =>
-                                  MediaContent(id: el.id)),
+                              builder: ((ctx) => MediaContent(id: el.id)),
                             ),
                           );
                         },
