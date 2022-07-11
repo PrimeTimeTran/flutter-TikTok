@@ -5,10 +5,12 @@ import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
 
 class MediaContent extends StatefulWidget {
-  const MediaContent({Key? key, this.index = 0, this.id = '0'})
+  const MediaContent(
+      {Key? key, this.index = 0, this.id = '0', this.discover = false})
       : super(key: key);
   final String id;
   final int index;
+  final bool discover;
 
   @override
   State<MediaContent> createState() => _MediaContentState();
@@ -58,6 +60,7 @@ class _MediaContentState extends State<MediaContent> {
   ContentType findContent(String id) =>
       mediaList.firstWhere((content) => content.id == id);
 
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -65,6 +68,7 @@ class _MediaContentState extends State<MediaContent> {
     final id = widget.id;
     final content = findContent(id);
 
+    var bool = true;
     return GestureDetector(
       onTap: () {
         _controller.value.isPlaying ? _controller.pause() : _controller.play();
@@ -94,117 +98,147 @@ class _MediaContentState extends State<MediaContent> {
               height: height,
               alignment: Alignment.bottomCenter,
               color: Colors.transparent,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      padding: const EdgeInsets.only(bottom: 30, left: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            content.creatorName,
-                            style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                decoration: TextDecoration.none),
+                  Row(
+                    children: [
+                      if (widget.discover)
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 20, top: 20),
+                            child: Icon(Icons.arrow_back),
                           ),
-                          Text(
-                            content.caption,
-                            style: const TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
-                                decoration: TextDecoration.none),
-                          ),
-                          Row(
-                            children: [
-                              const Icon(Icons.my_library_music),
-                              Text(
-                                content.soundTitle,
-                                style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.grey,
-                                    decoration: TextDecoration.none),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                        )
+                    ],
                   ),
                   Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      height: height / 1.8,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 5),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Icon(Icons.person_pin_circle_sharp),
-                            Column(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            alignment: Alignment.bottomLeft,
+                            padding:
+                                const EdgeInsets.only(bottom: 30, left: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                const Icon(Icons.heart_broken),
                                 Text(
-                                  content.countLikes.toString(),
+                                  content.creatorName,
                                   style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                  ),
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.none),
                                 ),
+                                Text(
+                                  content.caption,
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.none),
+                                ),
+                                Row(
+                                  children: [
+                                    const Icon(Icons.my_library_music),
+                                    Text(
+                                      content.soundTitle,
+                                      style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.grey,
+                                          decoration: TextDecoration.none),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
-                            Column(
-                              children: [
-                                const Icon(Icons.message),
-                                Text(
-                                  content.countComments.toString(),
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Icon(Icons.bookmark_outlined),
-                                Text(
-                                  content.countBookmarks.toString(),
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Icon(Icons.share_sharp),
-                                Text(
-                                  findContent(id).countShares.toString(),
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Icon(Icons.music_video),
-                          ],
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.centerRight,
+                            height: height / 1.8,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Icon(Icons.person_pin_circle_sharp),
+                                  Column(
+                                    children: [
+                                      const Icon(Icons.heart_broken),
+                                      Text(
+                                        content.countLikes.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      const Icon(Icons.message),
+                                      Text(
+                                        content.countComments.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      const Icon(Icons.bookmark_outlined),
+                                      Text(
+                                        content.countBookmarks.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      const Icon(Icons.share_sharp),
+                                      Text(
+                                        findContent(id).countShares.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Icon(Icons.music_video),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                  ),
+                  if (_controller.value.isInitialized)
+                    VideoProgressIndicator(
+                      _controller,
+                      allowScrubbing: true,
+                      colors: const VideoProgressColors(
+                          backgroundColor: Colors.red,
+                          bufferedColor: Colors.black,
+                          playedColor: Colors.blue),
                   ),
                 ],
               ),

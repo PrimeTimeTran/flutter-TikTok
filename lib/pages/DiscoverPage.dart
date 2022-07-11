@@ -52,7 +52,8 @@ class _DiscoverPage extends State<DiscoverPage> {
                           debugPrint(el.id);
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: ((ctx) => MediaContent(id: el.id)),
+                              builder: ((ctx) =>
+                                  MediaContent(id: el.id, discover: true)),
                             ),
                           );
                         },
