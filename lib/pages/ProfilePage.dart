@@ -2,6 +2,7 @@ import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
 
 import 'package:worldlingo3/pages/VietnamPage2.dart';
+import 'package:worldlingo3/widgets/FollowersPage.dart';
 import 'package:worldlingo3/widgets/NestedTabBar.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -33,7 +34,7 @@ class _ProfilePage extends State<ProfilePage> {
             onPressed: () {},
           ),
           IconButton(
-            onPressed: () {
+              onPressed: () {
                 showAdaptiveActionSheet(
                   context: context,
                   actions: <BottomSheetAction>[
@@ -66,11 +67,10 @@ class _ProfilePage extends State<ProfilePage> {
                   ],
                 );
               },
-              icon: const Icon(Icons.menu)
-          ),
+              icon: const Icon(Icons.menu)),
         ],
       ),
-      body: ListView(      
+      body: ListView(
         children: [
           Column(
             children: [
@@ -96,39 +96,57 @@ class _ProfilePage extends State<ProfilePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Column(
-                          children: const [
-                            Text(
-                              "117",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: ((ctx) => const FollowersPage()),
                               ),
-                            ),
-                            Text(
-                              "Following",
-                              style: TextStyle(
-                                color: Colors.black54,
+                            );
+                          },
+                          child: Column(
+                            children: const [
+                              Text(
+                                "117",
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "Following",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          children: const [
-                            Text(
-                              "82",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: ((ctx) => const FollowersPage()),
                               ),
-                            ),
-                            Text(
-                              "Followers",
-                              style: TextStyle(
-                                color: Colors.black54,
+                            );
+                          },
+                          child: Column(
+                            children: const [
+                              Text(
+                                "82",
+                                style: TextStyle(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "Followers",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         GestureDetector(
                           onTap: () => showDialog<String>(
@@ -201,7 +219,13 @@ class _ProfilePage extends State<ProfilePage> {
                         },
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      print('Hi');
+                      setState(() {
+                        print('Soi');
+                      });
+                      // reset();
+                    },
                     child: const Text('Edit Profile'),
                   ),
                 ],

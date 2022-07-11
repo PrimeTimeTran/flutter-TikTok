@@ -30,7 +30,7 @@ class _InboxPage extends State<InboxPage> {
                       CircleAvatar(
                         radius: 30,
                         backgroundImage:
-                            NetworkImage('https://picsum.photos/250?image=$i'),
+                            NetworkImage('https://i.pravatar.cc/150?img=$i'),
                       ),
                       Text(
                         faker.person.firstName(),
@@ -48,6 +48,7 @@ class _InboxPage extends State<InboxPage> {
             child: Row(children: const [Text('Messages')]),
           ),
           ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 20,
             separatorBuilder: (context, index) {
@@ -58,7 +59,7 @@ class _InboxPage extends State<InboxPage> {
                 leading: CircleAvatar(
                   radius: 30,
                   backgroundImage:
-                      NetworkImage('https://picsum.photos/250?image=$i'),
+                      NetworkImage('https://i.pravatar.cc/150?img=$i'),
                 ),
                 title: Text(faker.person.name()),
                 subtitle: Text(faker.lorem.sentences(1).join()),

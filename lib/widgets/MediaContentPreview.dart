@@ -29,12 +29,19 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
 
   @override
   Widget build(BuildContext context) {
-
     return _controller.value.isInitialized
         ? SizedBox(
-              width: 125,
-              height: 150,
-            child: VideoPlayer(_controller),
+            width: 125,
+            height: 150,
+            child: Stack(
+              children: [
+                VideoPlayer(_controller),
+                Text(
+                  widget.id,
+                  style: const TextStyle(color: Colors.yellow),
+                ),
+              ],
+            ),
           )
         : const SizedBox(
             width: 125,

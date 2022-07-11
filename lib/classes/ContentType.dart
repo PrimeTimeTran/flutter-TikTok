@@ -6,6 +6,7 @@ import 'package:faker/faker.dart';
 
 final faker = Faker();
 final _random = Random();
+const uuid = Uuid();
 
 int randomNum() => 1 + _random.nextInt(75 - 1);
 String randomImage() => "https://picsum.photos/1000?image=${randomNum()}";
@@ -38,7 +39,6 @@ List mediaUrls = [
   'https://assets.mixkit.co/videos/preview/mixkit-man-playing-with-a-tower-of-poker-chips-5251-large.mp4',
   'https://assets.mixkit.co/videos/preview/mixkit-candies-in-a-waffle-cone-on-a-yellow-background-10368-large.mp4',
   'https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-rubik-cube-that-seems-to-melt-on-13765-large.mp4',
-
 
   // 16:9
   'https://assets.mixkit.co/videos/preview/mixkit-beach-front-with-children-playing-2176-large.mp4',
@@ -97,11 +97,9 @@ class ContentType {
   List<ContentType> createSampleList() {
     List<ContentType> mediaList = <ContentType>[];
     for (var i = 0; i < 30; i++) {
-      var uuid = const Uuid();
-
       mediaList.add(
         ContentType(
-            id: uuid.v1(),
+            id: '$i',
             creatorName: faker.person.name(),
             caption: faker.lorem.sentences(1).join(),
             soundTitle: faker.lorem.words(3).join(' '),
@@ -118,4 +116,9 @@ class ContentType {
   }
 }
 
-final mediaList = ContentType().createSampleList();
+var mediaList = ContentType().createSampleList();
+
+reset() {
+  print('Bout to Reset');
+  mediaList = ContentType().createSampleList();
+}

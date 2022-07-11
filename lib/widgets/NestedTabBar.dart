@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
+import 'package:worldlingo3/widgets/ProfileGrid.dart';
 
 import 'package:worldlingo3/widgets/ProfileTile.dart';
 
@@ -64,42 +65,11 @@ class _NestedTabBarState extends State<NestedTabBar>
             height: screenHeight * 0.90,
             child: TabBarView(
               controller: nestedTabController,
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.white,
-                  ),
-                  child: GridView.count(
-                    primary: false,
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 1,
-                    childAspectRatio: (9 / 10),
-                    padding: const EdgeInsets.all(1),
-                    children: <Widget>[
-                      for (var i = 0; i < 30; i++) ProfileTile(index: i)
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.orangeAccent,
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.greenAccent,
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.indigoAccent,
-                  ),
-                ),
+              children: const <Widget>[
+                ProfileGrid(),
+                ProfileGrid(),
+                ProfileGrid(),
+                ProfileGrid(),
               ],
             ),
           ),
