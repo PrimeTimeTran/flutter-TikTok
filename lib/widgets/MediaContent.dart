@@ -27,7 +27,9 @@ class _MediaContentState extends State<MediaContent> {
     super.initState();
     debugPrint('Media Content INIT');
     debugPrint(widget.id);
-    _controller = VideoPlayerController.network(getContent(widget.id).mediaUrl)
+    var go = getContent(widget.id).mediaUrl;
+    print(go);
+    _controller = VideoPlayerController.network(go)
       ..initialize().then((_) {
         setState(() {});
       });
@@ -59,7 +61,6 @@ class _MediaContentState extends State<MediaContent> {
 
   ContentType findContent(String id) =>
       mediaList.firstWhere((content) => content.id == id);
-
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +245,7 @@ class _MediaContentState extends State<MediaContent> {
                           backgroundColor: Colors.red,
                           bufferedColor: Colors.black,
                           playedColor: Colors.blue),
-                  ),
+                    ),
                 ],
               ),
             ),

@@ -20,8 +20,10 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
     super.initState();
     ContentType findContent(String id) =>
         mediaList.firstWhere((content) => content.id == id);
-
-    _controller = VideoPlayerController.network(findContent(widget.id).mediaUrl)
+    var go = findContent(widget.id).mediaUrl;
+    debugPrint('Preview Content');
+    debugPrint(go);
+    _controller = VideoPlayerController.network(go)
       ..initialize().then((_) {
         setState(() {});
       });
