@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
 class FollowersPage extends StatefulWidget {
-  const FollowersPage({Key? key}) : super(key: key);
+  FollowersPage({Key? key, this.tabIndex = 0}) : super(key: key);
+  int tabIndex;
 
   @override
   State<FollowersPage> createState() => _FollowersPageState();
@@ -17,6 +18,7 @@ class _FollowersPageState extends State<FollowersPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _tabController.index = widget.tabIndex;
   }
 
   @override

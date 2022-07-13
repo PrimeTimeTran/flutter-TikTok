@@ -41,9 +41,9 @@ List mediaUrls = [
   'https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-rubik-cube-that-seems-to-melt-on-13765-large.mp4',
 
   // 16:9
-  'https://assets.mixkit.co/videos/preview/mixkit-beach-front-with-children-playing-2176-large.mp4',
-  'https://assets.mixkit.co/videos/preview/mixkit-one-on-one-basketball-game-751-large.mp4',
-  'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+  // 'https://assets.mixkit.co/videos/preview/mixkit-beach-front-with-children-playing-2176-large.mp4',
+  // 'https://assets.mixkit.co/videos/preview/mixkit-one-on-one-basketball-game-751-large.mp4',
+  // 'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
 ];
 
 List colors = [
@@ -97,19 +97,21 @@ class ContentType {
   List<ContentType> createSampleList() {
     List<ContentType> mediaList = <ContentType>[];
     for (var i = 0; i < 30; i++) {
+      var url = mediaUrls[_random.nextInt(mediaUrls.length)];
       mediaList.add(
         ContentType(
-            id: '$i',
-            creatorName: faker.person.name(),
-            caption: faker.lorem.sentences(1).join(),
-            soundTitle: faker.lorem.words(3).join(' '),
-            countLikes: faker.randomGenerator.integer(50000, min: 100),
-            countComments: faker.randomGenerator.integer(1000, min: 10),
-            countBookmarks: faker.randomGenerator.integer(2000, min: 10),
-            countShares: faker.randomGenerator.integer(50000, min: 100),
-            image: randomImage(),
-            mediaUrl: mediaUrls[_random.nextInt(mediaUrls.length)],
-            materialColor: colors[_random.nextInt(colors.length)]),
+          id: '$i',
+          mediaUrl: url,
+          image: randomImage(),
+          creatorName: faker.person.name(),
+          caption: faker.lorem.sentences(1).join(),
+          soundTitle: faker.lorem.words(3).join(' '),
+          materialColor: colors[_random.nextInt(colors.length)],
+          countLikes: faker.randomGenerator.integer(50000, min: 100),
+          countComments: faker.randomGenerator.integer(1000, min: 10),
+          countBookmarks: faker.randomGenerator.integer(2000, min: 10),
+          countShares: faker.randomGenerator.integer(50000, min: 100),
+        ),
       );
     }
     return mediaList;

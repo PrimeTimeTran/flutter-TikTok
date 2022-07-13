@@ -106,9 +106,14 @@ class _MediaContentState extends State<MediaContent> {
                       if (widget.discover)
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 20, top: 20),
-                            child: Icon(Icons.arrow_back),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 20),
+                            child: Column(
+                              children: [
+                                const Icon(Icons.arrow_back),
+                                Text(widget.id),
+                              ],
+                            ),
                           ),
                         )
                     ],

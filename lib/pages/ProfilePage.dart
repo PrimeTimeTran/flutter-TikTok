@@ -1,8 +1,9 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
 
-import 'package:worldlingo3/pages/VietnamPage2.dart';
-import 'package:worldlingo3/widgets/FollowersPage.dart';
+import 'package:worldlingo3/pages/FindFriendsPage.dart';
+import 'package:worldlingo3/pages/FollowersPage.dart';
+
 import 'package:worldlingo3/widgets/NestedTabBar.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _ProfilePage extends State<ProfilePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const VietnamPage2()),
+              MaterialPageRoute(builder: (context) => const FindFriendsPage()),
             );
           },
           icon: const Icon(Icons.people_alt_outlined),
@@ -100,7 +101,10 @@ class _ProfilePage extends State<ProfilePage> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: ((ctx) => const FollowersPage()),
+                                builder: ((ctx) => FollowersPage(
+                                      tabIndex: 0,
+                                    )),
+
                               ),
                             );
                           },
@@ -126,7 +130,7 @@ class _ProfilePage extends State<ProfilePage> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: ((ctx) => const FollowersPage()),
+                                builder: ((ctx) => FollowersPage(tabIndex: 1)),
                               ),
                             );
                           },
