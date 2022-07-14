@@ -34,9 +34,9 @@ class _DiscoverPage extends State<DiscoverPage> {
         children: <Widget>[
           const Carousel(),
           ListView.separated(
+            itemCount: 2,
             primary: false,
             shrinkWrap: true,
-            itemCount: 2,
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
               return SizedBox(
@@ -48,6 +48,9 @@ class _DiscoverPage extends State<DiscoverPage> {
                     final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
                       behavior: HitTestBehavior.opaque,
+                      child: IgnorePointer(
+                        child: MediaContentPreview(id: el.id),
+                      ),
                       onTap: () {
                         debugPrint('onTap ${el.id}: ${el.mediaUrl}');
                         Navigator.of(context).push(
@@ -57,9 +60,6 @@ class _DiscoverPage extends State<DiscoverPage> {
                           ),
                         );
                       },
-                      child: IgnorePointer(
-                        child: MediaContentPreview(id: el.id),
-                      ),
                     );
                   },
                 ),

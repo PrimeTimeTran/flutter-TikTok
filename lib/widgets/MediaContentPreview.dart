@@ -32,7 +32,7 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
 
     Future.delayed(const Duration(milliseconds: 500), () {
       if (kIsWeb) {
-        // _controller.play();
+        _controller.play();
       } else {
         _controller.play();
       }

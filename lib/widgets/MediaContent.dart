@@ -41,9 +41,7 @@ class _MediaContentState extends State<MediaContent> {
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
       if (kIsWeb) {
-        if (widget.index != 0) {
-          _controller.play();
-        }
+        _controller.play();
       } else {
         _controller.play();
       }
