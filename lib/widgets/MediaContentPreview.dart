@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:video_player/video_player.dart';
 
 import 'package:worldlingo3/classes/ContentType.dart';
@@ -15,18 +15,32 @@ class MediaContentPreview extends StatefulWidget {
 class _MediaContentPreviewState extends State<MediaContentPreview> {
   late VideoPlayerController _controller;
 
+  ContentType getContent(String id) =>
+      mediaList.firstWhere((content) => content.id == id);
+
   @override
   void initState() {
     super.initState();
-    ContentType findContent(String id) =>
-        mediaList.firstWhere((content) => content.id == id);
-    var go = findContent(widget.id).mediaUrl;
-    debugPrint('Preview Content');
-    debugPrint(go);
-    _controller = VideoPlayerController.network(go)
+    final url = getContent(widget.id).mediaUrl;
+    debugPrint('MediaPreview ${widget.id}: $url');
+    _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
         setState(() {});
       });
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (kIsWeb) {
+        // _controller.play();
+      } else {
+        _controller.play();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    debugPrint('Disposing MediaPreview');
+    _controller.dispose();
+    super.dispose();
   }
 
   @override

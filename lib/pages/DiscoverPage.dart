@@ -42,15 +42,13 @@ class _DiscoverPage extends State<DiscoverPage> {
               return SizedBox(
                 height: height / 5,
                 child: ListView.separated(
-                  itemCount: 2,
+                  itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
                     final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
                         onTap: () {
-                          debugPrint('onTap');
-                          debugPrint(el.id);
-                          debugPrint(el.mediaUrl);
+                          debugPrint('onTap ${el.id}: ${el.mediaUrl}');
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: ((ctx) =>

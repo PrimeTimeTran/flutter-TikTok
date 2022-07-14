@@ -78,7 +78,8 @@ class ContentType {
   MaterialColor materialColor;
 
   ContentType(
-      {Key? key,
+    {
+    Key? key,
       this.id = '',
       this.image = '',
       this.creatorAvatarUrl = '',
@@ -92,7 +93,8 @@ class ContentType {
       this.countShares = 0,
       this.soundTitle = '',
       this.mediaUrl = '',
-      this.materialColor = Colors.red});
+    this.materialColor = Colors.red,
+  });
 
   List<ContentType> createSampleList() {
     List<ContentType> mediaList = <ContentType>[];
@@ -118,9 +120,4 @@ class ContentType {
   }
 }
 
-var mediaList = ContentType().createSampleList();
-
-reset() {
-  print('Bout to Reset');
-  mediaList = ContentType().createSampleList();
-}
+final mediaList = ContentType().createSampleList();

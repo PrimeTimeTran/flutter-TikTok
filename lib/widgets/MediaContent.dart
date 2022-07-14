@@ -25,11 +25,9 @@ class _MediaContentState extends State<MediaContent> {
   @override
   void initState() {
     super.initState();
-    debugPrint('Media Content INIT');
-    debugPrint(widget.id);
-    var go = getContent(widget.id).mediaUrl;
-    print(go);
-    _controller = VideoPlayerController.network(go)
+    final url = getContent(widget.id).mediaUrl;
+    debugPrint('MediaContent ${widget.id}: $url');
+    _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
         setState(() {});
       });
@@ -54,6 +52,7 @@ class _MediaContentState extends State<MediaContent> {
 
   @override
   void dispose() {
+    debugPrint('Disposing Media Content');
     _controller.pause();
     _controller.dispose();
     super.dispose();
@@ -69,7 +68,6 @@ class _MediaContentState extends State<MediaContent> {
     final id = widget.id;
     final content = findContent(id);
 
-    var bool = true;
     return GestureDetector(
       onTap: () {
         _controller.value.isPlaying ? _controller.pause() : _controller.play();
