@@ -34,7 +34,7 @@ class _DiscoverPage extends State<DiscoverPage> {
         children: <Widget>[
           const Carousel(),
           ListView.separated(
-            itemCount: 2,
+            itemCount: entries.length,
             primary: false,
             shrinkWrap: true,
             padding: const EdgeInsets.all(8),
@@ -42,7 +42,7 @@ class _DiscoverPage extends State<DiscoverPage> {
               return SizedBox(
                 height: height / 5,
                 child: ListView.builder(
-                  itemCount: 2,
+                  itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
                     final el = mediaList[_random.nextInt(mediaList.length)];
