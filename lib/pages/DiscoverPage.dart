@@ -19,6 +19,7 @@ class DiscoverPage extends StatefulWidget {
 class _DiscoverPage extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
     final List<String> entries = <String>[
@@ -40,7 +41,8 @@ class _DiscoverPage extends State<DiscoverPage> {
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
               return SizedBox(
-                height: height / 5,
+                width: width * 0.33,
+                height: height * .25,
                 child: ListView.builder(
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
