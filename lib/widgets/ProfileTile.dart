@@ -66,10 +66,18 @@ class _ProfileTileState extends State<ProfileTile> {
               Positioned(
                   bottom: 20,
                   left: 5,
-                  child: Text(
+                child: Row(children: [
+                  const Icon(
+                    size: 15,
+                    color: Colors.white,
+                    Icons.play_arrow_outlined,
+                  ),
+                  Text(
                     '${(random.decimal() * 1000).toStringAsFixed(1)}K',
                     style: const TextStyle(color: Colors.white),
-                  )),
+                  ),
+                ]),
+              ),
             ],
           ),
         ),
