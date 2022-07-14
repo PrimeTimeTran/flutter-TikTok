@@ -52,15 +52,8 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
         ? SizedBox(
             width: 125,
             height: 150,
-            child: Stack(
-              children: [
+            child:
                 VideoPlayer(_controller),
-                // Text(
-                //   widget.id,
-                //   style: const TextStyle(color: Colors.yellow),
-                // ),
-              ],
-            ),
           )
         : const SizedBox(
             width: 125,

@@ -36,34 +36,32 @@ class _DiscoverPage extends State<DiscoverPage> {
           ListView.separated(
             primary: false,
             shrinkWrap: true,
-            itemCount: entries.length,
+            itemCount: 2,
             padding: const EdgeInsets.all(8),
             itemBuilder: (BuildContext context, int index) {
               return SizedBox(
                 height: height / 5,
-                child: ListView.separated(
-                  itemCount: 5,
+                child: ListView.builder(
+                  itemCount: 2,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
-                    debugPrint('DiscoverPage itemBuilder');
                     final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
-                        onTap: () {
-                          debugPrint('onTap ${el.id}: ${el.mediaUrl}');
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: ((ctx) =>
-                                  MediaContent(id: el.id, discover: true)),
-                            ),
-                          );
-                        },
-                        child: MediaContentPreview(id: el.id));
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        debugPrint('onTap ${el.id}: ${el.mediaUrl}');
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: ((ctx) =>
+                                MediaContent(id: el.id, discover: true)),
+                          ),
+                        );
+                      },
+                      child: IgnorePointer(
+                        child: MediaContentPreview(id: el.id),
+                      ),
+                    );
                   },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const Padding(
-                    padding: EdgeInsets.all(1),
-                    child: Divider(),
-                  ),
                 ),
               );
             },
