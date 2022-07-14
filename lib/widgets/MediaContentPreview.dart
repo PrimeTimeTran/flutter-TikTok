@@ -27,6 +27,9 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
       ..initialize().then((_) {
         setState(() {});
       });
+      
+    _controller.setLooping(true);
+
     Future.delayed(const Duration(milliseconds: 500), () {
       if (kIsWeb) {
         // _controller.play();
@@ -52,10 +55,10 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
             child: Stack(
               children: [
                 VideoPlayer(_controller),
-                Text(
-                  widget.id,
-                  style: const TextStyle(color: Colors.yellow),
-                ),
+                // Text(
+                //   widget.id,
+                //   style: const TextStyle(color: Colors.yellow),
+                // ),
               ],
             ),
           )

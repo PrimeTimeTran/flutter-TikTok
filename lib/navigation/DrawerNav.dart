@@ -67,14 +67,22 @@ bottomTabs() {
 
 class _DrawerNav extends State<DrawerNav> {
   int currentIdx = 1;
+  int _selectedIndex = 0;
 
-  final screens = [
-    const TikTokPage(),
-    const DiscoverPage(),
-    const PhrasePage(),
-    const InboxPage(),
-    const ProfilePage(),
+  static const List<Widget> _widgetOptions = <Widget>[
+    TikTokPage(),
+    DiscoverPage(),
+    PhrasePage(),
+    InboxPage(),
+    ProfilePage(),
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,22 +92,34 @@ class _DrawerNav extends State<DrawerNav> {
               title: currentIdx != 2 ? title(currentIdx) : null,
             )
           : null,
-      body: IndexedStack(
-        index: currentIdx,
-        children: screens,
-      ),
-      bottomNavigationBar: SafeArea(
-        bottom: true,
-        minimum: const EdgeInsets.only(bottom: 10),
-        child: BottomNavigationBar(
-          elevation: 0,
-          items: bottomTabs(),
-          currentIndex: currentIdx,
-          unselectedItemColor: Colors.black45,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.black,
-          onTap: (idx) => setState(() => currentIdx = idx),
-        ),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black87,
+        unselectedItemColor: Colors.black45,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Discover',
+            icon: Icon(Icons.arrow_circle_up_sharp),
+          ),
+          BottomNavigationBarItem(
+            icon: CustomTabIcon(),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            label: 'Inbox',
+            icon: Icon(Icons.inbox),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(Icons.account_box_rounded),
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(

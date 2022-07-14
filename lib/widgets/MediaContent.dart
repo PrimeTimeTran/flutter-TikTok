@@ -108,9 +108,9 @@ class _MediaContentState extends State<MediaContent> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20, top: 20),
                             child: Column(
-                              children: [
-                                const Icon(Icons.arrow_back),
-                                Text(widget.id),
+                              children: const [
+                                Icon(Icons.arrow_back),
+                                // Text(widget.id),
                               ],
                             ),
                           ),

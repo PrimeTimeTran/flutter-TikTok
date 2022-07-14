@@ -45,6 +45,7 @@ class _DiscoverPage extends State<DiscoverPage> {
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
+                    debugPrint('DiscoverPage itemBuilder');
                     final el = mediaList[_random.nextInt(mediaList.length)];
                     return GestureDetector(
                         onTap: () {
