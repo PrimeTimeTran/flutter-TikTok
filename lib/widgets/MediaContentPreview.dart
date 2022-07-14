@@ -25,7 +25,7 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
       ..initialize().then((_) {
         setState(() {});
       });
-      
+
     _controller.setLooping(true);
 
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -41,17 +41,21 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return _controller.value.isInitialized
         ? SizedBox(
-            width: 125,
-            height: 150,
-            child:
-                VideoPlayer(_controller),
-          )
-        : const SizedBox(
-            width: 125,
-            height: 150.0,
+            width: width * 0.33,
+            height: height * .25,
             child: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: VideoPlayer(_controller),
+            ),
+          )
+        : SizedBox(
+            width: width * 0.33,
+            height: height * .25,
+            child: const Padding(
               padding: EdgeInsets.all(50),
               child: CircularProgressIndicator(),
             ),
