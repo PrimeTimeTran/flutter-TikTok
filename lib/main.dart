@@ -50,6 +50,11 @@ class MyApp extends StatelessWidget {
           size: 28,
           color: Colors.black54,
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            primary: Colors.white,
+          ),
+        ),
         appBarTheme: const AppBarTheme(
           elevation: 0,
           titleTextStyle: TextStyle(color: Colors.black87),

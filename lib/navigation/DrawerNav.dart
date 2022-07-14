@@ -66,7 +66,6 @@ bottomTabs() {
 }
 
 class _DrawerNav extends State<DrawerNav> {
-  int currentIdx = 1;
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -87,21 +86,24 @@ class _DrawerNav extends State<DrawerNav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ![0, 2, 4].contains(currentIdx)
+      appBar: ![0, 2, 4].contains(_selectedIndex)
           ? AppBar(
-              title: currentIdx != 2 ? title(currentIdx) : null,
+              title: _selectedIndex != 2 ? title(_selectedIndex) : null,
             )
           : null,
       body: _widgetOptions.elementAt(_selectedIndex),
+
       bottomNavigationBar: SafeArea(
         bottom: true,
         minimum: const EdgeInsets.only(bottom: 10),
         child: BottomNavigationBar(
           elevation: 0,
           onTap: _onItemTapped,
+          showUnselectedLabels: true,
           currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.black87,
-          unselectedItemColor: Colors.black45,
+          // unselectedItemColor: Colors.black45,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Home',

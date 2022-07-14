@@ -41,7 +41,7 @@ class _DiscoverPage extends State<DiscoverPage> {
             itemBuilder: (BuildContext context, int index) {
               return SizedBox(
                 height: height / 5,
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: 5,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int i) {
@@ -62,6 +62,11 @@ class _DiscoverPage extends State<DiscoverPage> {
                       },
                     );
                   },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Padding(
+                    padding: EdgeInsets.all(1),
+                    child: Divider(),
+                  ),
                 ),
               );
             },

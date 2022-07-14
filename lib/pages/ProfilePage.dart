@@ -224,11 +224,6 @@ class _ProfilePage extends State<ProfilePage> {
                       ),
                     ),
                     onPressed: () {
-                      print('Hi');
-                      setState(() {
-                        print('Soi');
-                      });
-                      // reset();
                     },
                     child: const Text('Edit Profile'),
                   ),

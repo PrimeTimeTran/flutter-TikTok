@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:video_player/video_player.dart';
 
 import 'package:worldlingo3/classes/ContentType.dart';
@@ -22,7 +21,6 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
   void initState() {
     super.initState();
     final url = getContent(widget.id).mediaUrl;
-    debugPrint('MediaPreview ${widget.id}: $url');
     _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
         setState(() {});
@@ -31,17 +29,12 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
     _controller.setLooping(true);
 
     Future.delayed(const Duration(milliseconds: 500), () {
-      if (kIsWeb) {
-        _controller.play();
-      } else {
-        _controller.play();
-      }
+      _controller.play();
     });
   }
 
   @override
   void dispose() {
-    debugPrint('Disposing MediaPreview');
     _controller.dispose();
     super.dispose();
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:video_player/video_player.dart';
 import 'package:worldlingo3/classes/ContentType.dart';
@@ -26,7 +25,6 @@ class _MediaContentState extends State<MediaContent> {
   void initState() {
     super.initState();
     final url = getContent(widget.id).mediaUrl;
-    debugPrint('MediaContent ${widget.id}: $url');
     _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
         setState(() {});
@@ -40,17 +38,12 @@ class _MediaContentState extends State<MediaContent> {
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
-      if (kIsWeb) {
-        _controller.play();
-      } else {
-        _controller.play();
-      }
+      _controller.play();
     });
   }
 
   @override
   void dispose() {
-    debugPrint('Disposing Media Content');
     _controller.pause();
     _controller.dispose();
     super.dispose();

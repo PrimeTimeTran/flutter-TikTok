@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:worldlingo3/widgets/ProfileGrid.dart';
 
-import 'package:worldlingo3/widgets/ProfileTile.dart';
 
 class NestedTabBar extends StatefulWidget {
   @override
@@ -41,7 +40,7 @@ class _NestedTabBarState extends State<NestedTabBar>
                 isScrollable: true,
                 controller: nestedTabController,
                 labelColor: Colors.grey.shade900,
-                indicatorColor: Colors.grey.shade300,
+                indicatorColor: Colors.grey.shade900,
                 unselectedLabelColor: Colors.black54,
                 labelPadding: const EdgeInsets.symmetric(horizontal: 35.0),
                 tabs: const <Widget>[
