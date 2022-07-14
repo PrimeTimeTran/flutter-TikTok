@@ -1,7 +1,12 @@
+
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
 
 import 'package:worldlingo3/pages/DetailsPage.dart';
 import 'package:worldlingo3/classes/hero_type.dart';
+
+final faker = Faker();
+final random = RandomGenerator(seed: 63833423);
 
 class ProfileTile extends StatefulWidget {
   const ProfileTile({Key? key, required this.index}) : super(key: key);
@@ -55,7 +60,18 @@ class _ProfileTileState extends State<ProfileTile> {
       child: Container(
         child: Hero(
           tag: 'image' + _heroTypeList[i].title,
-          child: Image.network(_heroTypeList[i].image, fit: BoxFit.cover),
+          child: Stack(
+            children: [
+              Image.network(_heroTypeList[i].image, fit: BoxFit.cover),
+              Positioned(
+                  bottom: 20,
+                  left: 5,
+                  child: Text(
+                    '${(random.decimal() * 1000).toStringAsFixed(1)}K',
+                    style: const TextStyle(color: Colors.white),
+                  )),
+            ],
+          ),
         ),
       ),
     );
