@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
@@ -64,19 +63,21 @@ class _ProfileTileState extends State<ProfileTile> {
             children: [
               Image.network(_heroTypeList[i].image, fit: BoxFit.cover),
               Positioned(
-                  bottom: 20,
-                  left: 5,
-                child: Row(children: [
-                  const Icon(
-                    size: 15,
-                    color: Colors.white,
-                    Icons.play_arrow_outlined,
-                  ),
-                  Text(
-                    '${(random.decimal() * 1000).toStringAsFixed(1)}K',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                ]),
+                bottom: 20,
+                left: 5,
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.play_arrow_outlined,
+                      size: 15,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      '${(random.decimal() * 1000).toStringAsFixed(1)}K',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
