@@ -97,6 +97,7 @@ class _DrawerNav extends State<DrawerNav> {
         bottom: true,
         minimum: const EdgeInsets.only(bottom: 10),
         child: BottomNavigationBar(
+          elevation: 0,
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.black87,
