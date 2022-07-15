@@ -22,7 +22,7 @@ title(int currentIdx) {
       }
     case 1:
       {
-        return const Text('Discover');
+        return const Text('Discover 1');
       }
     case 2:
       {

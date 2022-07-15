@@ -15,8 +15,12 @@ class MediaContent extends StatefulWidget {
   State<MediaContent> createState() => _MediaContentState();
 }
 
-class _MediaContentState extends State<MediaContent> {
+class _MediaContentState extends State<MediaContent>
+    with TickerProviderStateMixin {
   late VideoPlayerController _controller;
+  late final AnimationController _animationController =
+      AnimationController(duration: const Duration(seconds: 10), vsync: this)
+        ..repeat();
 
   ContentType getContent(String id) =>
       mediaList.firstWhere((content) => content.id == id);
@@ -46,6 +50,7 @@ class _MediaContentState extends State<MediaContent> {
   void dispose() {
     _controller.pause();
     _controller.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -217,7 +222,26 @@ class _MediaContentState extends State<MediaContent> {
                                       ),
                                     ],
                                   ),
-                                  const Icon(Icons.music_video),
+                                  AnimatedBuilder(
+                                    animation: _animationController,
+                                    // child: const Icon(Icons.music_note),
+                                    child: RawMaterialButton(
+                                      onPressed: () {},
+                                      elevation: 2.0,
+                                      fillColor: Colors.white,
+                                      padding: const EdgeInsets.all(3.0),
+                                      shape: const CircleBorder(),
+                                      child: const Icon(Icons.music_note),
+                                    ),
+                                    builder:
+                                        (BuildContext context, Widget? child) {
+                                      return Transform.rotate(
+                                        angle:
+                                            _animationController.value * 10.0,
+                                        child: child,
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
