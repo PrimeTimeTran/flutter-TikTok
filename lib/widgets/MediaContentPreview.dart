@@ -54,7 +54,7 @@ class _MediaContentPreviewState extends State<MediaContentPreview> {
           )
         : SizedBox(
             width: width * 0.33,
-            height: height * .25,
+            height: width * 0.33,
             child: const Padding(
               padding: EdgeInsets.all(50),
               child: CircularProgressIndicator(),
