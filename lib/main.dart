@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -15,6 +15,7 @@ FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
   await UserSheetsApi.init();
   await PhraseSheetsApi.init();
   await Firebase.initializeApp(
