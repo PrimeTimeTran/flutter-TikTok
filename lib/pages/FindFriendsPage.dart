@@ -3,6 +3,12 @@ import 'package:faker/faker.dart';
 
 final faker = Faker();
 
+class User {
+  final String name;
+  final int idx;
+  const User({required this.name, required this.idx});
+}
+
 class FindFriendsPage extends StatefulWidget {
   const FindFriendsPage({Key? key}) : super(key: key);
 
@@ -11,7 +17,33 @@ class FindFriendsPage extends StatefulWidget {
 }
 
 class _FindFriendsPageState extends State<FindFriendsPage> {
-  Widget itemBuilder(i) {
+  late List<User> users = [];
+  late List<User> usersCopy = [];
+  final myController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    users = [];
+
+    for (var i = 0; i < 50; i += 1) {
+      var user = User(name: faker.person.name(), idx: i);
+      users.add(user);
+    }
+    usersCopy = users;
+  }
+
+  void searchUsers(String query) {
+    final suggestions = users.where((u) {
+      final name = u.name.toLowerCase();
+      final input = query.toLowerCase();
+      return name.contains(input);
+    }).toList();
+    setState(() {
+      usersCopy = suggestions;
+    });
+  }
+
+  Widget itemBuilder(user) {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Padding(
@@ -24,10 +56,10 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                 CircleAvatar(
                   radius: 25,
                   backgroundImage:
-                      NetworkImage('https://i.pravatar.cc/150?img=$i'),
+                      NetworkImage('https://i.pravatar.cc/150?img=${user.idx}'),
                 ),
                 Text(
-                  faker.person.firstName(),
+                  user.name,
                   style: const TextStyle(color: Colors.black87, fontSize: 10),
                 ),
               ],
@@ -39,7 +71,7 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(faker.person.name()),
+                    Text(user.name),
                     const Text('Follows you'),
                   ],
                 ),
@@ -77,9 +109,10 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
             SizedBox(
               height: MediaQuery.of(context).size.height - 80,
               child: ListView.builder(
-                itemCount: 20,
+                itemCount: usersCopy.length,
                 physics: const AlwaysScrollableScrollPhysics(), // new
                 itemBuilder: (ctx, i) {
+                  final user = usersCopy[i];
                   if (i == 0) {
                     return Column(
                       children: [
@@ -88,6 +121,8 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                           child: Container(
                             color: Colors.grey.shade100,
                             child: TextFormField(
+                              controller: myController,
+                              onChanged: searchUsers,
                               decoration: InputDecoration(
                                 filled: true,
                                 hintText: 'Search users',
@@ -109,11 +144,11 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                             ),
                           ),
                         ),
-                        itemBuilder(i)
+                        itemBuilder(user)
                       ],
                     );
                   }
-                  return itemBuilder(i);
+                  return itemBuilder(user);
                 },
               ),
             )
