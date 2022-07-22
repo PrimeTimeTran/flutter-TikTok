@@ -4,9 +4,11 @@ import 'package:faker/faker.dart';
 final faker = Faker();
 
 class User {
-  final String name;
+  final String firstName;
+  final String lastName;
   final int idx;
-  const User({required this.name, required this.idx});
+  const User(
+      {required this.firstName, required this.lastName, required this.idx});
 }
 
 class FindFriendsPage extends StatefulWidget {
@@ -26,7 +28,11 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
     users = [];
 
     for (var i = 0; i < 50; i += 1) {
-      var user = User(name: faker.person.name(), idx: i);
+      var user = User(
+        idx: i,
+        lastName: faker.person.lastName(),
+        firstName: faker.person.firstName(),
+      );
       users.add(user);
     }
     usersCopy = users;
@@ -34,9 +40,10 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
 
   void searchUsers(String query) {
     final suggestions = users.where((u) {
-      final name = u.name.toLowerCase();
+      final firstName = u.firstName.toLowerCase();
+      final lastName = u.lastName.toLowerCase();
       final input = query.toLowerCase();
-      return name.contains(input);
+      return firstName.contains(input) || lastName.contains(input);
     }).toList();
     setState(() {
       usersCopy = suggestions;
@@ -59,7 +66,7 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                       NetworkImage('https://i.pravatar.cc/150?img=${user.idx}'),
                 ),
                 Text(
-                  user.name,
+                  user.firstName,
                   style: const TextStyle(color: Colors.black87, fontSize: 10),
                 ),
               ],
@@ -71,7 +78,7 @@ class _FindFriendsPageState extends State<FindFriendsPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(user.name),
+                    Text('${user.firstName} ${user.lastName}'),
                     const Text('Follows you'),
                   ],
                 ),

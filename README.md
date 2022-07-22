@@ -1,6 +1,6 @@
-# 30 days of Flutter(1)
+# TikTok
 
-A few projects to understand Flutter.
+A TikTok clone build using Flutter.
 
 ![demo](./demo.gif)
 
