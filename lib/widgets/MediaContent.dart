@@ -31,19 +31,107 @@ class _MediaContentState extends State<MediaContent>
     final url = getContent(widget.id).mediaUrl;
     _controller = VideoPlayerController.network(url)
       ..initialize().then((_) {
-        setState(() {});
       });
 
+    // _controller.addListener(checkVideo);
     _controller.setLooping(true);
-    // _controller.setVolume(0.0);
-    // _controller.setVolume(0.5);
     _controller.setVolume(1);
 
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
       _controller.play();
+      // _showMyDialog();
     });
+  }
+
+  void checkVideo() {
+    if (_controller.value.position ==
+        const Duration(seconds: 0, minutes: 0, hours: 0)) {
+      debugPrint('video Started');
+    }
+
+    if (!_controller.value.isPlaying &&
+        _controller.value.duration == _controller.value.position) {
+      debugPrint('video Ended');
+      _showMyDialog();
+    }
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Whats your answer?'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    debugPrint('Tapped');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(5),
+                    child:
+                        Text('A) Would you like to approve of this message?'),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    debugPrint('Tapped');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(5),
+                    child:
+                        Text('B) Would you like to approve of this message?'),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    debugPrint('Tapped');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(5),
+                    child:
+                        Text('C) Would you like to approve of this message?'),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    debugPrint('Tapped');
+                    Navigator.of(context).pop();
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(5),
+                    child:
+                        Text('D) Would you like to approve of this message?'),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('True'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('False'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
