@@ -28,12 +28,15 @@ class _MediaContentState extends State<MediaContent>
   @override
   void initState() {
     super.initState();
-    final url = getContent(widget.id).mediaUrl;
-    _controller = VideoPlayerController.network(url)
-      ..initialize().then((_) {
-      });
 
-    // _controller.addListener(checkVideo);
+    configVideo();
+  }
+
+  void configVideo() {
+    final url = getContent(widget.id).mediaUrl;
+    _controller = VideoPlayerController.network(url)..initialize().then((_) {});
+
+    _controller.addListener(checkVideo);
     _controller.setLooping(true);
     _controller.setVolume(1);
 
@@ -57,6 +60,12 @@ class _MediaContentState extends State<MediaContent>
       _showMyDialog();
     }
   }
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   configVideo();
+  // }
 
   Future<void> _showMyDialog() async {
     return showDialog<void>(
