@@ -31,6 +31,14 @@ class _MediaContentState extends State<MediaContent>
     configVideo();
   }
 
+  @override
+  void dispose() {
+    _controller.pause();
+    _controller.dispose();
+    _animationController.dispose();
+    super.dispose();
+  }
+
   void configVideo() {
     final url = getContent(widget.id).mediaUrl;
     _controller = VideoPlayerController.network(url)..initialize().then((_) {});
@@ -39,7 +47,7 @@ class _MediaContentState extends State<MediaContent>
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
 
-      // _controller.addListener(checkVideo);
+      _controller.addListener(checkVideo);
       _controller.setLooping(true);
       _controller.setVolume(1);
       _controller.play();
@@ -56,15 +64,9 @@ class _MediaContentState extends State<MediaContent>
     if (!_controller.value.isPlaying &&
         _controller.value.duration == _controller.value.position) {
       debugPrint('video Ended');
-      // _showMyDialog();
+      _showMyDialog();
     }
   }
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   configVideo();
-  // }
 
   Future<void> _showMyDialog() async {
     return showDialog<void>(
@@ -140,14 +142,6 @@ class _MediaContentState extends State<MediaContent>
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.pause();
-    _controller.dispose();
-    _animationController.dispose();
-    super.dispose();
   }
 
   ContentType findContent(String id) =>
