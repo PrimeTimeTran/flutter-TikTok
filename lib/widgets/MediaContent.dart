@@ -28,7 +28,6 @@ class _MediaContentState extends State<MediaContent>
   @override
   void initState() {
     super.initState();
-
     configVideo();
   }
 
@@ -36,13 +35,13 @@ class _MediaContentState extends State<MediaContent>
     final url = getContent(widget.id).mediaUrl;
     _controller = VideoPlayerController.network(url)..initialize().then((_) {});
 
-    _controller.addListener(checkVideo);
-    _controller.setLooping(true);
-    _controller.setVolume(1);
-
     // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
     // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
     Future.delayed(const Duration(milliseconds: 500), () {
+
+      // _controller.addListener(checkVideo);
+      _controller.setLooping(true);
+      _controller.setVolume(1);
       _controller.play();
       // _showMyDialog();
     });
@@ -57,7 +56,7 @@ class _MediaContentState extends State<MediaContent>
     if (!_controller.value.isPlaying &&
         _controller.value.duration == _controller.value.position) {
       debugPrint('video Ended');
-      _showMyDialog();
+      // _showMyDialog();
     }
   }
 
