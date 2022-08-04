@@ -27,7 +27,6 @@ class _MediaContentState extends State<MediaContent>
 
   @override
   void initState() {
-    debugPrint("Init MediaContent");
     super.initState();
     configVideo();
   }
@@ -42,16 +41,20 @@ class _MediaContentState extends State<MediaContent>
 
   void configVideo() {
     final url = getContent(widget.id).mediaUrl;
-    _controller = VideoPlayerController.network(url)..initialize().then((_) {});
-
-    // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
-    // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
+    _controller = VideoPlayerController.network(url)
+      ..initialize().then((_) {
+        // Keep me so that video auto plays
+        setState(() {});
+      });
     Future.delayed(const Duration(milliseconds: 500), () {
       // _controller.addListener(checkVideo);
       _controller.setLooping(true);
       _controller.setVolume(1);
-      _controller.play();
     });
+    _controller.play();
+
+    // Autoplay is not PWA. Autoplay cannot work inside of web browsers without first having a user action
+    // https://github.com/flutter/flutter/issues/47030#issuecomment-852564661
   }
 
   void checkVideo() {
@@ -195,7 +198,6 @@ class _MediaContentState extends State<MediaContent>
                             child: Column(
                               children: const [
                                 Icon(Icons.arrow_back),
-                                // Text(widget.id),
                               ],
                             ),
                           ),
@@ -313,7 +315,6 @@ class _MediaContentState extends State<MediaContent>
                                   ),
                                   AnimatedBuilder(
                                     animation: _animationController,
-                                    // child: const Icon(Icons.music_note),
                                     child: RawMaterialButton(
                                       onPressed: () {},
                                       elevation: 2.0,
