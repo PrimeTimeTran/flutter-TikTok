@@ -41,13 +41,9 @@ dependencies:
   faker: ^2.0.0
   carousel_slider: ^4.1.1
   adaptive_action_sheet: ^2.0.1
-  firebase_core: ^1.19.1
-  firebase_analytics: ^9.1.12
   sticky_headers: ^0.3.0
   video_thumbnail: ^0.5.0
   uuid: ^3.0.6
-  flutter_dotenv: ^5.0.2
-
 
 flutter_icons:
   image_path_android: "assets/icon/icon-710x599-android.png"
@@ -56,11 +52,7 @@ flutter_icons:
   ios: true
 
 flutter_native_splash:
-  #color: "#ff9100"
   background_image: "assets/splash.png"
-  # image: "assets/splash.png"
-
-
 
 dev_dependencies:
   flutter_test:
@@ -87,7 +79,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    # - .env
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

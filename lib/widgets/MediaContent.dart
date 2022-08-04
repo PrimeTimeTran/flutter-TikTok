@@ -51,7 +51,6 @@ class _MediaContentState extends State<MediaContent>
       _controller.setLooping(true);
       _controller.setVolume(1);
       _controller.play();
-      // _showMyDialog();
     });
   }
 

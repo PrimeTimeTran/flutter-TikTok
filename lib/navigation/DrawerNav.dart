@@ -40,31 +40,6 @@ title(int currentIdx) {
   }
 }
 
-bottomTabs() {
-  return const [
-    BottomNavigationBarItem(
-      label: 'Home',
-      icon: Icon(Icons.home),
-    ),
-    BottomNavigationBarItem(
-      label: 'Discover',
-      icon: Icon(Icons.arrow_circle_up_sharp),
-    ),
-    BottomNavigationBarItem(
-      icon: CustomTabIcon(),
-      label: '',
-    ),
-    BottomNavigationBarItem(
-      label: 'Inbox',
-      icon: Icon(Icons.inbox),
-    ),
-    BottomNavigationBarItem(
-      label: 'Profile',
-      icon: Icon(Icons.account_box_rounded),
-    ),
-  ];
-}
-
 class _DrawerNav extends State<DrawerNav> {
   int _selectedIndex = 0;
 
