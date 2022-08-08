@@ -57,7 +57,6 @@ class _DrawerNav extends State<DrawerNav> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +77,6 @@ class _DrawerNav extends State<DrawerNav> {
           currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.black87,
-          // unselectedItemColor: Colors.black45,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Home',
@@ -119,7 +117,6 @@ class _DrawerNav extends State<DrawerNav> {
             ListTile(
               title: const Text('🇺🇸 United States'),
               onTap: () {
-                Navigator.pop(context);
               },
             ),
             ListTile(
